@@ -1,14 +1,9 @@
 # 运行方式
 
-~~~shell
-cd shells
-chmod 700 *.sh
-./build_download.sh #自动安装，下载测试
-~~~
-
 需要修改makefile的路径
 
 ~~~shell
+cd build
 vi makefile
 #以下5处路径修改为安装路径
 FFLAG        = -O2  -g -ffast-math -w -ip -fno-alias -xHost -traceback -fpe0 -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD) 
@@ -18,6 +13,14 @@ LLIBS        = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns
 LLIBS_SEQ    = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns
 
 CGNS_INCDIR  = -I/home/asc18/zjw/CFL3D/external/cgns/include
+~~~
+
+自动安装下载测试样例
+
+~~~shell
+cd ../shells
+chmod 700 *.sh
+./build_download.sh #自动安装，下载测试
 ~~~
 
 # 运行测试样例
