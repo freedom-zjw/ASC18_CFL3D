@@ -1,4 +1,6 @@
 #----------------------------------------------- bulid
+module load intel/2017.6
+
 cd ..
 cd external
 chmod 700 install_cgns
