@@ -25,6 +25,10 @@ chmod 700 *.sh
 
 # 运行测试样例
 
+~~~shell
+#运行时需要将CFL3D/build/bin 添加至环境变量，需要自己修改
+export PATH=~/zjw/CFL3D/build/bin:$PATH
+~~~
 结果文件为.out 和.res,请自行比对官网[Test Cases](https://cfl3d.larc.nasa.gov/Cfl3dv6/cfl3dv6_testcases.html)
 
 以下为官网样例测试情况,可运行的样例使用shells中的对应脚本即可运行
