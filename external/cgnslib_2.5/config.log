@@ -1,0 +1,88 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:544: checking CGNS version
+configure:554: checking if gcc is requested
+configure:795: checking for cc
+configure:876: checking whether the C compiler (cc  ) works
+configure:892: cc -o conftest    conftest.c  1>&5
+configure:918: checking whether the C compiler (cc  ) is a cross-compiler
+configure:923: checking whether we are using GNU C
+configure:932: cc -E conftest.c
+configure:961: checking if compiler supports prototyping
+configure:971: cc -c -O2  conftest.c 1>&5
+configure:990: checking for object suffix
+configure:996: cc -c -O2  conftest.c 1>&5
+configure:1014: checking for Cygwin environment
+configure:1030: cc -c -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:1024:20: error: '__CYGWIN32__' undeclared (first use in this function)
+ #define __CYGWIN__ __CYGWIN32__
+                    ^
+configure:1026:8: note: in expansion of macro '__CYGWIN__'
+ return __CYGWIN__;
+        ^
+configure:1024:20: note: each undeclared identifier is reported only once for each function it appears in
+ #define __CYGWIN__ __CYGWIN32__
+                    ^
+configure:1026:8: note: in expansion of macro '__CYGWIN__'
+ return __CYGWIN__;
+        ^
+configure: failed program was:
+#line 1019 "configure"
+#include "confdefs.h"
+
+int main() {
+
+#ifndef __CYGWIN__
+#define __CYGWIN__ __CYGWIN32__
+#endif
+return __CYGWIN__;
+; return 0; }
+configure:1047: checking for mingw32 environment
+configure:1059: cc -c -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:1055:8: error: '__MINGW32__' undeclared (first use in this function)
+ return __MINGW32__;
+        ^
+configure:1055:8: note: each undeclared identifier is reported only once for each function it appears in
+configure: failed program was:
+#line 1052 "configure"
+#include "confdefs.h"
+
+int main() {
+return __MINGW32__;
+; return 0; }
+configure:1078: checking for executable suffix
+configure:1088: cc -o conftest -O2   conftest.c  1>&5
+configure:1195: checking for f77
+configure:1195: checking for f90
+configure:1195: checking for f95
+configure:1234: checking whether we are using GNU Fortran 77
+configure:1243: f95 -E conftest.fpp
+configure:1264: checking if debugging is enabled
+configure:1295: checking for ranlib
+configure:1328: checking for strip
+configure:1363: checking how to run the C preprocessor
+configure:1384: cc -E  conftest.c >/dev/null 2>conftest.out
+configure:1443: checking for ANSI C header files
+configure:1456: cc -E  conftest.c >/dev/null 2>conftest.out
+configure:1523: cc -o conftest -O2   conftest.c  1>&5
+configure: In function 'main':
+configure:1518:67: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
+ if (XOR (islower (i), ISLOWER (i)) || toupper (i) != TOUPPER (i)) exit(2);
+                                                                   ^
+configure:1556: checking for working const
+configure:1610: cc -c -O2  conftest.c 1>&5
+configure:1634: checking for size_t
+configure:1677: checking if system was specified
+configure:1687: checking if 64bit support is requested
+configure:1701: checking cgsystem
+configure:1818: checking if Fortran interface is enabled
+configure:1947: checking for concatenation operator
+configure:2008: checking if building a shared library
+configure:2070: checking if using HDF5
+configure:2451: checking if large file support is requested
+configure:2681: checking for a BSD compatible install
+configure:2742: checking where to install library
+configure:2747: checking where to install headers

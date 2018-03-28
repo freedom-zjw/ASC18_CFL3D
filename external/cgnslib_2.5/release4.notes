@@ -1,0 +1,5 @@
+1) fixed a number of issues related to memory leakage
+2) the element data is no longer kept in internal memory
+   unless partial reads or writes are being done.
+3) Paul Edward's fix for reading ADF blocks
+4) fix the HDF5 interface to save arrays in c order.

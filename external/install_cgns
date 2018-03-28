@@ -1,0 +1,8 @@
+wget "https://github.com/CGNS/CGNS_archives/raw/master/cgnslib_2.5-5.tar.gz" -O cgnslib_2.5-5.tar.gz
+tar xf cgnslib_2.5-5.tar.gz
+cd cgnslib_2.5
+./configure --prefix=$PWD/../cgns
+make VERBOSE=1
+mkdir -p ../cgns/lib
+mkdir -p ../cgns/include
+make install

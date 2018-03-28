@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+
+zones="1 10 100 1000"
+values="1 10 100 1000 10000 100000"
+for z in $zones ; do
+  for v in $values ; do
+    dbtest $z $v
+  done
+done
+exit

@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# this script builds the CGNS library
+
+do64bit=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -*enable-64* | -*64* | 64*) do64bit=-64bit ;;
+    *) echo "unknown argument $1" && exit 1 ;;
+  esac
+  shift
+done
+
+if test ! -f cgsystem; then
+  echo "cgsystem script does not exist" && exit 1
+fi
+if test ! -x cgsystem; then
+  chmod +x cgsystem
+fi
+
+SYSTEM=`./cgsystem $do64bit`
+
+if test ! -f make.$SYSTEM; then
+  if test ! -f configure; then
+    echo "configure script does not exist" && exit 1
+  fi
+  if test ! -x configure; then
+    chmod +x configure
+  fi
+  ./configure --with-system=$SYSTEM
+  echo ""
+fi
+
+make SYSTEM=$SYSTEM
+exit 0
+
