@@ -1,6 +1,3 @@
-export PATH=~/zjw/CFL3D/build/bin:$PATH
-
-cd ../cfl3d.larc.nasa.gov/Cfl3dv6/2DTestcases/Backstep/Backstep
 
 splitter < ./split.inp_1blk 
 ronnie < ./ron_step_grdgen.inp

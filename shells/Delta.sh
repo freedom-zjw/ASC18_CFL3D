@@ -1,4 +1,4 @@
-export PATH=~/zjw/CFL3D/build/bin:$PATH
+
 
 cd ../cfl3d.larc.nasa.gov/Cfl3dv6/3DTestcases/Delta/Delta_cgns
 

@@ -1,6 +1,3 @@
-export PATH=~/zjw/CFL3D/build/bin:$PATH
-
-cd ../cfl3d.larc.nasa.gov/Cfl3dv6/2DTestcases/Curvature/SoMellors
 
 splitter < ./split_form_to_unform.inp 
 cfl3d_seq < ./somellor_sa.inp 

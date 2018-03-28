@@ -1,5 +1,3 @@
-export PATH=~/zjw/CFL3D/build/bin:$PATH
-module load intel/2017.6
 cd ../cfl3d.larc.nasa.gov/Cfl3dv6/3DTestcases/ARA_M100/ARA_M100
 
 splitter < ./split.inp_16blk 

@@ -1,4 +1,4 @@
-export PATH=~/zjw/CFL3D/build/bin:$PATH
+
 
 cd ../cfl3d.larc.nasa.gov/Cfl3dv6/2DTestcases/Flatplateyplus/Flatplateyplus
 splitter < ./splity+.02.inp 
