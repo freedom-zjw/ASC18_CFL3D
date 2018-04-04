@@ -48,8 +48,8 @@
 
 FFLAG        = -O2  -g -ffast-math -w -ip -fno-alias -xHost -traceback -fpe0 -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD) 
 FFLAG_SPEC   = -O2   -g -ffast-math -w -ip -fno-alias -xHost -traceback -fpe0 -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD)
-PREC         = 
-PREC_MPI     = 
+PREC         = -r8
+PREC_MPI     = -DDBLE_PRECSN
 LFLAG        = -z muldefs -xHost -traceback -fpe0
 LLIBS        = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns
 LLIBS_SEQ    = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns
