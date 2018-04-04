@@ -1,4 +1,5 @@
 cfl3d.larc.nasa.gov/
 build/bin/
 .DS_Store/
+.DS_Store
 *.o*
