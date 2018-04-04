@@ -80,7 +80,7 @@ do_f90=yes      # default to f90
 cgnsdir=""      # default to not cgns compatable
 do_purify=no    # don't use purify
 do_fastio=no    # default flag to not do fast I/O option
-linux_compiler_flags="default" # default linux compiler flags
+linux_compiler_flags="PG" # default linux compiler flags
 
 while [ $# -gt 0 ]; do
   case "$1" in
