@@ -43,6 +43,11 @@ c
       common /precond/ cprec,uref,avn
       common /entfix/ epsa_l,epsa_r
       common /zero/iexp
+#   ifdef CMPLX 
+      complex temp
+#   else
+      real temp
+#   endif
 c
 c     Notes on the entropy fix implemented here and in dfhat, diagj,
 c     diagk, and diagi:
@@ -71,7 +76,7 @@ c
       c1   = 1.e0/gm1
 c
       if (real(cprec) .eq. 0.) then
-cdir$ ivdep
+!DIR$ IVDEP
          do 1000 i=1,n 
          t1 = qr(i,1)-ql(i,1)
          t2 = qr(i,2)-ql(i,2)
@@ -149,21 +154,59 @@ c
          ql(i,2) = (t5-t19)/t7 
 c
          t18 = t13+at(i)
-         t18 = ccabs(t18)
+c        t18 = ccabs(t18)
+#   ifdef CMPLX
+         if (real(t18).lt.0.) t18 = -t18
+#   else
+         t18 = abs(t18)
+#   endif 
          t19 = t13+at(i)+t8
-         t19 = ccabs(t19)
+c         t19 = ccabs(t19)
+#   ifdef CMPLX
+         if (real(t19).lt.0.) t19 = -t19
+#   else
+         t19 = abs(t19)
+#   endif 
          t17 = t13+at(i)-t8
-         t17 = ccabs(t17)
+c         t17 = ccabs(t17)
+#   ifdef CMPLX
+         if (real(t17).lt.0.) t17 = -t17
+#   else
+         t17 = abs(t17)
+#   endif 
 c
 c        limit eigenvalues a la Harten and Gnoffo (NASA TP-2953)
 c
          if (real(epsa_r) .gt.0.) then
             cc    = t8
-            uu    = ccabs(t9)
-            vv    = ccabs(t10)
-            ww    = ccabs(t11)
+c            uu    = ccabs(t9)
+c            vv    = ccabs(t10)
+c            ww    = ccabs(t11)
+#   ifdef CMPLX
+            uu = t9
+            if (real(t9).lt.0.) uu = -t9
+            vv = t10
+            if (real(t10).lt.0.) vv = -t10
+            ww = t11
+            if (real(t11).lt.0.) ww = -t11
+#   else
+            uu = abs(t9)
+            vv = abs(t10)
+            ww = abs(t11)
+#   endif 
             epsaa = epsa_r*(cc + uu + vv + ww)
-            epsbb = 0.25/ccmax(epsaa,zero)
+
+#   ifdef CMPLX
+            if (real(epsaa).gt.real(zero)) then
+                temp = epsaa
+            else
+                temp = zero
+            endif
+#   else
+            temp = max(epsaa, zero)
+#   endif 
+c            epsbb = 0.25/ccmax(epsaa,zero)
+            epsbb = 0.25/temp
             epscc = 2.00*epsaa
             if (real(t18).lt.real(epscc)) t18 = t18*t18*epsbb + epsaa
             if (real(t17).lt.real(epscc)) t17 = t17*t17*epsbb + epsaa
@@ -199,8 +242,8 @@ c
          f(i,5) = t7*f5
  1000    continue
       else
-cdir$ ivdep
-         do 10001 i=1,n 
+!DIR$ IVDEP
+         do  i=1,n 
          t1 = qr(i,1)-ql(i,1)
          t2 = qr(i,2)-ql(i,2)
          t3 = qr(i,3)-ql(i,3)
@@ -265,9 +308,35 @@ c
 c    
 c         compute preconditioning parameters
 c
-         vmag1 =  2.0*t6 + 2.0*t7*ccabs(delp)/t8t
-         vel2 = ccmax(vmag1,avn*uref**2)
-         vel = sqrt(ccmin(t7,vel2))
+#   ifdef CMPLX
+         temp = delp
+         if (real(delp).lt.0.) temp = -delp
+#   else
+         temp = abs(delp)
+#   endif 
+c         vmag1 =  2.0*t6 + 2.0*t7*ccabs(delp)/t8t
+         vmag1 =  2.0*t6 + 2.0*t7*temp/t8t
+c         vel2 = ccmax(vmag1,avn*uref**2)
+#   ifdef CMPLX
+        temp = avn*uref*uref
+        if (real(vmag1).gt.real(temp)) then
+           vel2 = vmag1
+        else
+           vel2 = temp
+        endif
+#   else
+        vel2 = max(vmag1,avn*uref*uref)
+#   endif
+c         vel = sqrt(ccmin(t7,vel2))
+#   ifdef CMPLX
+        if (real(t7).lt.real(vel2)) then
+           vel = sqrt(t7)
+        else
+           vel = sqrt(vel2)
+        endif
+#   else
+        vel = sqrt(min(t7, vel2))
+#   endif
          vel = cprec*vel + (1.-cprec)*t8
          xm2 = (vel/t8)**2   
          xmave = t13/t8
@@ -295,19 +364,50 @@ c
          fplus = (t19-t18)/(xm2*t8)
          fmins = -(t17-t18)/(xm2*t8)
          fsum = 2.0/(fplus + fmins)/xm2
-         t18 = ccabs(t18)
-         t19 = ccabs(t19)
-         t17 = ccabs(t17)
+c         t18 = ccabs(t18)
+c         t19 = ccabs(t19)
+c         t17 = ccabs(t17)
+#   ifdef CMPLX
+         if (real(t18).lt.0.) t18 = -t18
+         if (real(t19).lt.0.) t19 = -t19
+         if (real(t17).lt.0.) t17 = -t17
+#   else
+         t18 = abs(t18)
+         t19 = abs(t19)
+         t17 = abs(t17)
+#   endif 
 c
 c        limit eigenvalues a la Harten and Gnoffo (NASA TP-2953)
 c
          if (real(epsa_r) .gt.0.) then
             cc    = t8
-            uu    = ccabs(t9)
-            vv    = ccabs(t10)
-            ww    = ccabs(t11)
+c            uu    = ccabs(t9)
+c            vv    = ccabs(t10)
+c            ww    = ccabs(t11)
+#   ifdef CMPLX
+            uu = t9
+            if (real(t9).lt.0.) uu = -t9
+            vv = t10
+            if (real(t10).lt.0.) vv = -t10
+            ww = t11
+            if (real(t11).lt.0.) ww = -t11
+#   else
+            uu = abs(t9)
+            vv = abs(t10)
+            ww = abs(t11)
+#   endif
             epsaa = epsa_r*(cc + uu + vv + ww)
-            epsbb = 0.25/ccmax(epsaa,zero)
+#   ifdef CMPLX
+            if (real(epsaa).gt.real(zero)) then
+                temp = epsaa
+            else
+                temp = zero
+            endif
+#   else
+            temp = max(epsaa, zero)
+#   endif 
+c            epsbb = 0.25/ccmax(epsaa,zero)
+            epsbb = 0.25/temp
             epscc = 2.00*epsaa
             if (real(t18).lt.real(epscc)) t18 = t18*t18*epsbb + epsaa
             if (real(t17).lt.real(epscc)) t17 = t17*t17*epsbb + epsaa
@@ -340,7 +440,7 @@ c
          f(i,3) = t7*f3
          f(i,4) = t7*f4
          f(i,5) = t7*f5
-10001    continue
+         enddo
       end if
 c
       return

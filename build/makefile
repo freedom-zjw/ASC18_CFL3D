@@ -46,21 +46,21 @@
 # *************** COMPILER FLAG DEFINITIONS (MACHINE SPECIFIC) ***************
 #                 (CURRENT DEFINITIONS FOR LINUX ARCHITECTURE)
 
-FFLAG        = -O4 -g -w -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD)
-FFLAG_SPEC   = -O4 -g -w -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD)
+FFLAG        = -O3 -w -ipo -ip -fno-alias -xHost -traceback -fpe0 -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD)
+FFLAG_SPEC   = -O3 -w -ipo -ip -fno-alias -xHost -traceback -fpe0 -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD)
 PREC         = -r8
 PREC_MPI     = -DDBLE_PRECSN
-LFLAG        = -Wl,-Bdynamic -Wl,-z muldefs
-LLIBS        = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns  
-LLIBS_SEQ    = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns 
+LFLAG        = -z muldefs -xHost -traceback -fpe0 
+LLIBS        = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns
+LLIBS_SEQ    = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns
 MPI_INCDIR   = 
 CGNS_INCDIR  = -I/home/asc18/zjw/CFL3D/external/cgns/include
 CPP          = cpp
 CPPFLAG      = -P
-CPPOPT       =  $(MPI_INCDIR) -DDIST_MPI $(PREC_MPI)
-CPPOPT_SP    = -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS $(PREC_MPI) $(CGNS_INCDIR)
+CPPOPT       = $(MPI_INCDIR) -DDIST_MPI $(PREC_MPI)
+CPPOPT_SP    = -DP3D_SINGLE -DLINUX -DINTEL -DCGNS $(PREC_MPI) $(CGNS_INCDIR)
 CPPOPT_CMPLX = -DCMPLX
-FTN          = mpif90
+FTN          = mpiifort
 CFLAG        = 
 AROPT        = rusc
 RANLIB       = true

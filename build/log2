@@ -1,0 +1,687 @@
+>>> removing all files except makefile in cfl/mpi
+>>> removing all files except makefile in precfl/seq
+>>> removing all files except makefile in cfl/libs
+(cd cfl/mpi; \
+make -f makefile scrub EXEC="cfl3d_mpi" )
+(cd cfl/libs; \
+make -f makefile scrub EXEC="cfl3d_libs" )
+>>> removing all files except makefile in cfl/seq
+(cd precfl/seq; \
+make -f makefile scrub EXEC="precfl3d" )
+(cd cfl/seq; \
+make -f makefile scrub EXEC="cfl3d_seq" )
+>>> removing all files except makefile in ron/seq
+(cd ron/seq; \
+make -f makefile scrub EXEC="ronnie" )
+>>> removing all files except makefile in mag/seq
+(cd mag/seq; \
+make -f makefile scrub EXEC="maggie" )
+>>> removing all files except makefile in split/seq
+(cd split/seq; \
+make -f makefile scrub EXEC="splitter" )
+>>> removing all files except makefile in preron/seq
+(cd preron/seq; \
+make -f makefile scrub EXEC="preronnie" )
+>>> removing all files except makefile in cflcmplx/seq
+>>> removing all files except makefile in cflcmplx/mpi
+(cd cflcmplx/seq; \
+make -f makefile scrub EXEC="cfl3dcmplx_seq" )
+>>> removing all files except makefile in cflcmplx/libs
+(cd cflcmplx/mpi; \
+make -f makefile scrub EXEC="cfl3dcmplx_mpi" )
+(cd cflcmplx/libs; \
+make -f makefile scrub EXEC="cfl3dcmplx_libs" )
+>>> removing all files except makefile in tools/seq
+(cd tools/seq; \
+make -f makefile scrub EXEC="cfl3d_tools" )
+>>> removing all files except makefile in splitcmplx/seq
+(cd splitcmplx/seq; \
+make -f makefile scrub EXEC="splittercmplx" )
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cfl/mpi”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cfl/seq”
+rm -f cfl3d_mpi 
+rm -f cfl3d_seq 
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/ron/seq”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/precfl/seq”
+rm -f ronnie
+rm -f *.a 
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cflcmplx/mpi”
+rm -f *.o
+rm -f *.o
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cflcmplx/seq”
+rm -f *.a 
+rm -f cfl3dcmplx_mpi 
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cfl/libs”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/split/seq”
+rm -f *.f
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/mag/seq”
+rm -f *.f
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cflcmplx/libs”
+rm -f cfl3dcmplx_seq 
+rm -f *.h
+rm -f splitter
+rm -f cfl3d_libs 
+rm -f *.h
+rm -f *.a 
+rm -f *.F
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/preron/seq”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/tools/seq”
+rm -f maggie
+rm -f *.o
+rm -f *.o
+rm -f cfl3dcmplx_libs 
+rm -f *.F
+rm -f *.a
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/splitcmplx/seq”
+rm -f *.o
+rm -f *.o *.mod
+rm -f preronnie
+rm -f precfl3d
+rm -f grid_perturb_cmplx grid_perturb Get_FD moovmaker plot3dg_to_cgns XINTOUT_to_ovrlp p3d_to_INGRID \
+ INGRID_to_p3d cfl3d_to_pegbc everyother_xyz initialize_field p3d_to_cfl3drst v6_restart_mod v6inpdoubhalf \
+         cgns_to_cfl3dinput cgns_readhist v6_ronnie_mod cfl3d_to_nmf cfl3dinp_to_FVBND nmf_to_cfl3dinput \
+         gridswitchijk v6inpswitchijk
+rm -f splittercmplx
+rm -f *.f
+rm -f *.a
+rm -f *.o
+rm -f *.f
+rm -f *.a
+rm -f *.o
+rm -f *.o
+rm -f *.o
+rm -f *.a 
+rm -f *.o
+rm -f *.o
+rm -f *.f
+rm -f *.f
+rm -f *.F
+rm -f *.F
+rm -f *.F
+rm -f *.f
+rm -f *.f *.F
+rm -f *.o
+rm -f *.f
+rm -f *.h
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cfl/seq”
+rm -f *.f
+rm -f *.h
+rm -f *.f
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cfl/mpi”
+rm -f *.h
+rm -f *.F *.F90
+rm -f *.F
+rm -f *.f
+rm -f *.h
+rm -f *.f
+rm -f *.h
+rm -f *.F
+rm -f *.h
+rm -f *.F
+rm -f *.F
+rm -f *.h
+rm -f *.h
+rm -f *.F *.F90 
+rm -f *.F
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/split/seq”
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/mag/seq”
+rm -f *.h
+rm -f *.F
+rm -f *.h
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cflcmplx/mpi”
+rm -f *.h
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/precfl/seq”
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/tools/seq”
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/ron/seq”
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cfl/libs”
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cflcmplx/libs”
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cflcmplx/seq”
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/preron/seq”
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/splitcmplx/seq”
+                                                              
+                                                              
+                                                              
+                                                              
+                                                                  
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              
+==============================================================
+                                                              
+                                                              
+==============================================================
+==============================================================
+                                                              
+==================================================================
+==============================================================
+==============================================================
+==============================================================
+==============================================================
+==============================================================
+==============================================================
+  linking common library files for mpi/seq versions of cfl3d  
+==============================================================
+        linking files for sequential version of cfl3d         
+==============================================================
+==============================================================
+           linking files for mpi version of cfl3d             
+linking common library files for complex mpi/seq versions of cfl3d
+       linking files for complex mpi version of cfl3d         
+    linking files for complex sequential version of cfl3d     
+        linking files for sequential version of ronnie        
+       linking files for sequential version of precfl3d       
+        linking files for sequential version of maggie        
+==============================================================
+ linking files for sequential versions of some cfl3d utilities
+==============================================================
+       linking files for sequential version of preronnie      
+    linking files for sequential version of block splitter    
+==================================================================
+==============================================================
+==============================================================
+linking files for complex sequential version of block splitter
+==============================================================
+==============================================================
+==============================================================
+==============================================================
+                                                              
+( cd cfl/libs; make -f makefile link \
+EXEC="cfl3d_libs" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+==============================================================
+                                                              
+==============================================================
+==============================================================
+( cd cfl/seq; make -f makefile link \
+EXEC="cfl3d_seq" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+                                                              
+==============================================================
+( cd cfl/mpi; make -f makefile link \
+EXEC="cfl3d_mpi" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+                                                                  
+( cd cflcmplx/libs; make -f makefile link \
+EXEC="cfl3dcmplx_libs" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+                                                              
+                                                              
+                                                              
+                                                              
+( cd ron/seq; make -f makefile link \
+EXEC="ronnie" \
+RONSRC="../../../source/ronnie" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+                                                              
+( cd cflcmplx/mpi; make -f makefile link \
+EXEC="cfl3dcmplx_mpi" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+( cd cflcmplx/seq; make -f makefile link \
+EXEC="cfl3dcmplx_seq" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+                                                              
+( cd mag/seq; make -f makefile link \
+EXEC="maggie" \
+MAGSRC="../../../source/maggie" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+                                                              
+( cd precfl/seq; make -f makefile link \
+EXEC="precfl3d" \
+PRESRC="../../../source/precfl3d" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+( cd tools/seq; make -f makefile link \
+EXEC="cfl3d_tools" \
+TOOLSSRC="../../../source/tools" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+( cd preron/seq; make -f makefile link \
+EXEC="preronnie" \
+PRERONSRC="../../../source/ronnie" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+                                                              
+                                                              
+( cd split/seq; make -f makefile link \
+EXEC="splitter" \
+SPLITSRC="../../../source/splitter" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+( cd splitcmplx/seq; make -f makefile link \
+EXEC="splittercmplx" \
+SPLITSRC="../../../source/splitter" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cfl/libs”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cfl/mpi”
+ln -s ../libs/libcommon.a .
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cfl/seq”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cflcmplx/mpi”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/ron/seq”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cflcmplx/libs”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cflcmplx/seq”
+ln -s ../libs/libcommon.a .
+ln -s ../libs/libcommon.a .
+        linking source code
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/mag/seq”
+ln -sf ../../../source/cfl3d/libs/*.F .
+ln -s ../libs/libcommon.a .
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/precfl/seq”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/preron/seq”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/split/seq”
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/splitcmplx/seq”
+        linking source code
+ln -s ../../../source/cfl3d/dist/*.F .
+        linking source code
+ln -s ../../../source/cfl3d/dist/*.F .
+        linking source code
+        linking source code
+        linking source code
+ln -s ../../../source/cfl3d/dist/*.F .
+         linking source code
+ln -s ../../../source/cfl3d/dist/*.F .
+ln -s ../../../source/cfl3d/libs/*.F .
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/tools/seq”
+ln -s ../../../source/maggie/*.F .
+         linking header files
+ln -s ../../../header/mag1.h .
+        linking source code
+        linking source code
+ln -s ../../../source/precfl3d/*.F .
+        linking source code
+ln -s ../../../source/splitter/*.F .
+ln -s  ../../../source/ronnie/main_pre.F .
+        linking source code
+ln -s ../../../source/splitter/*.F .
+        linking source code
+ln -s  ../../../source/ronnie/*.F .
+ln -s  ../../../source/ronnie/termn8.F .
+        linking source code
+ln -s ../../../source/tools/*.F .
+ln -s  ../../../source/ronnie/usrint.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/mag/seq”
+ln -s ../../../source/cfl3d/libs/ccomplex.F .
+ln -s ../../../source/cfl3d/libs/ccomplex.F .
+ln -s ../../../source/cfl3d/libs/ccomplex.F .
+ln -s ../../../source/cfl3d/dist/umalloc.F .
+ln -s ../../../source/cfl3d/dist/sizer.F .
+ln -s  ../../../source/ronnie/sizer.F .
+ln -s ../../../source/cfl3d/libs/ccomplex.F .
+ln -s  ../../../source/cfl3d/dist/cputim.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cfl/mpi”
+ln -s ../../../source/cfl3d/dist/umalloc.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cflcmplx/mpi”
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cfl/seq”
+ln -s ../../../source/cfl3d/libs/parser.F .
+ln -s  ../../../source/cfl3d/dist/umalloc.F .
+ln -s ../../../source/cfl3d/dist/pointers.F .
+ln -s  ../../../source/cfl3d/dist/writ_buf.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cflcmplx/seq”
+ln -s ../../../source/cfl3d/libs/readkey.F .
+ln -s ../../../source/cfl3d/dist/umalloc_c.F .
+ln -s  ../../../source/cfl3d/libs/global2.F .
+ln -s ../../../source/tools/*.F90 .
+ln -s ../../../source/cfl3d/dist/compg2n.F .
+ln -s  ../../../source/cfl3d/dist/umalloc.F .
+ln -s ../../../source/cfl3d/libs/parser.F .
+ln -s  ../../../source/cfl3d/libs/outbuf.F .
+ln -s ../../../source/cfl3d/libs/outbuf.F .
+ln -s ../../../source/cfl3d/dist/umalloc.F .
+ln -s  ../../../source/cfl3d/dist/patcher.F .
+ln -s ../../../source/cfl3d/libs/readkey.F .
+ln -s ../../../source/cfl3d/libs/my_flush.F .
+ln -s  ../../../source/cfl3d/libs/ccomplex.F .
+ln -s ../../../source/cfl3d/dist/termn8.F .
+ln -s  ../../../source/cfl3d/libs/lead.F .
+ln -s ../../../source/cfl3d/libs/outbuf.F .
+ln -s  ../../../source/cfl3d/libs/my_flush.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/split/seq”
+ln -s ../../../source/cfl3d/dist/umalloc_r.F .
+ln -s ../../../source/cfl3d/libs/outbuf.F .
+ln -s  ../../../source/cfl3d/libs/pre_patch.F .
+ln -sf ../../../source/cfl3d/libs/*.F90 .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/preron/seq”
+ln -s ../../../source/cfl3d/libs/my_flush.F .
+ln -s ../../../source/cfl3d/libs/pre_patch.F .
+ln -s ../../../source/cfl3d/dist/umalloc_c.F .
+ln -s  ../../../source/cfl3d/libs/collx.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cflcmplx/libs”
+ln -s ../../../source/cfl3d/libs/readkey.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/splitcmplx/seq”
+ln -s  ../../../source/cfl3d/libs/global2.F .
+ln -s ../../../source/cfl3d/libs/pre_blockbc.F .
+ln -s ../../../source/cfl3d/libs/global0.F .
+ln -s  ../../../source/cfl3d/libs/arc.F .
+ln -s ../../../source/cfl3d/libs/pre_period.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cfl/libs”
+ln -s ../../../source/cfl3d/libs/parser.F .
+ln -s  ../../../source/cfl3d/libs/avgint.F .
+ln -s ../../../source/cfl3d/libs/getdhdr.F .
+ln -s ../../../source/cfl3d/libs/outbuf.F .
+ln -s  ../../../source/cfl3d/libs/collapse.F .
+ln -s ../../../source/cfl3d/libs/pre_embed.F .
+ln -s ../../../source/cfl3d/libs/cgnstools.F  .
+ln -s  ../../../source/cfl3d/libs/diagnos.F .
+ln -s ../../../source/cfl3d/libs/global.F .
+ln -s  ../../../source/cfl3d/libs/my_flush.F .
+ln -s  ../../../source/cfl3d/libs/direct.F .
+ln -s ../../../source/cfl3d/libs/global2.F .
+ln -s ../../../source/cfl3d/dist/termn8.F .
+ln -s  ../../../source/cfl3d/libs/dsmin.F .
+ln -s ../../../source/cfl3d/libs/rpatch0.F .
+ln -s  ../../../source/cfl3d/libs/expand.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/tools/seq”
+ln -s ../../../source/cfl3d/libs/getibk0.F .
+ln -s  ../../../source/cfl3d/libs/extra.F .
+ln -s ../../../source/cfl3d/libs/cntsurf.F .
+ln -s  ../../../source/cfl3d/libs/extrae.F .
+ln -s ../../../source/cfl3d/libs/lead.F .
+ln -s  ../../../source/cfl3d/libs/invert.F .
+ln -s ../../../source/cfl3d/libs/global0.F .
+ln -s  ../../../source/cfl3d/libs/loadgr.F .
+ln -s ../../../source/cfl3d/libs/readkey.F .
+ln -s  ../../../source/cfl3d/libs/newfit.F .
+ln -s ../../../source/cfl3d/libs/parser.F .
+ln -s  ../../../source/cfl3d/libs/project.F .
+ln -s ../../../source/cfl3d/libs/ccomplex.F .
+ln -s  ../../../source/cfl3d/libs/rechk.F .
+ln -s ../../../source/cfl3d/libs/cgnstools.F .
+ln -s  ../../../source/cfl3d/libs/rp3d.F .
+ln -s ../../../source/cfl3d/libs/setseg.F .
+ln -s  ../../../source/cfl3d/libs/shear.F .
+ln -s ../../../source/cfl3d/libs/my_flush.F .
+ln -s  ../../../source/cfl3d/libs/topol.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/precfl/seq”
+ln -s  ../../../source/cfl3d/libs/topol2.F .
+ln -s  ../../../source/cfl3d/libs/trace.F .
+ln -s  ../../../source/cfl3d/libs/xe.F .
+ln -s  ../../../source/cfl3d/libs/xe2.F .
+ln -s  ../../../source/cfl3d/libs/outbuf.F .
+ln -s  ../../../source/cfl3d/libs/transp.F .
+ln -s  ../../../source/cfl3d/libs/rotatp.F .
+ln -s  ../../../source/cfl3d/libs/ccomplex.F .
+ln -s  ../../../source/cfl3d/libs/my_flush.F .
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/ron/seq”
+                                                              
+==============================================================
+                    compiling cfl3d_libs                 
+==============================================================
+                                                              
+( cd cfl/libs; make -f makefile cfl3d_libs \
+FFLAG="-acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8 " \
+FFLAG_SPEC="-acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8 " \
+LFLAG="-Wl,-Bdynamic -Wl,-z muldefs" \
+EXEC="cfl3d_libs" \
+CPPFLAG="-P" \
+CPPOPT="-DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include" \
+AROPT="rusc" \
+RANLIB="true" \
+CPP="cpp" \
+CFLAG="" \
+LLIBS="-L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns  " \
+FTN="mpif90" \
+DIR="cfl/libs" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cfl/libs”
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c add2x.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c resadd.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c blocki_d.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c blockj_d.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c init_mast.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c blockk_d.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c mreal.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c barth3d.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c outbuf.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c get_bvals.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c qface.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c xmukin.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rotateq2_d.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c abciz.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c diagk.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c wkstn.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c abcjz.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c colldat.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dlutr.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c abckz.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c collv.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dlutrp.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c module_profileout.F90
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c q8vrev.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c collx.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dsmin.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c lamfix.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c collxtb.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c expand.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c int2.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c bc9999.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c extra.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c extrae.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c lead.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c amafi.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ffluxl.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c l2norm.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c bc_xmera.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c amafj.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dabciz.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c fhat.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c l2norm2.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c amafk.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dabcjz.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c fill.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c blkmax.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c avgint.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dabckz.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c loadgr.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c newfit.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c blocki.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dfbtr.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c getdhdr.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ld_qc.F
+  0 inform,   1 warnings,   0 severes, 0 fatal for int2
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c blockj.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dfbtrp.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c gfluxl.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c project.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c blockk.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dfhat.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c grdmove.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c q8sdot.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c bsub.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dfluxpm.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c hfluxl.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c q8smax.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c bsubp.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c diagi.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c q8smin.F
+PGF90-S-0155-Procedures called in a compute region must have acc routine information: ccabs (fhat.F: 274)
+PGF90-S-0155-Accelerator region ignored; see -Minfo messages  (fhat.F: 208)
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c spalart.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ccf.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c diagj.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c hole.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c global0.F
+fhat:
+    208, Accelerator region ignored
+    274, Accelerator restriction: call to 'ccabs' with no acc routine information
+  0 inform,   0 warnings,   2 severes, 0 fatal for fhat
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c tau2x.F
+  0 inform,   1 warnings,   0 severes, 0 fatal for barth3d
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c tdq.F
+make[1]: *** [fhat.o] 错误 2
+make[1]: *** 正在等待未完成的任务....
+  0 inform,   1 warnings,   0 severes, 0 fatal for spalart
+make[1]: 离开目录“/home/asc18/zjw/CFL3D/build/cfl/libs”
+make: *** [Zlibs] 错误 2
+                                                              
+                                                              
+==============================================================
+==============================================================
+                    compiling cfl3d_mpi                 
+                    compiling cfl3d_libs                 
+==============================================================
+==============================================================
+                                                              
+( cd cfl/libs; make -f makefile cfl3d_libs \
+FFLAG="-acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8 " \
+FFLAG_SPEC="-acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8 " \
+LFLAG="-Wl,-Bdynamic -Wl,-z muldefs" \
+EXEC="cfl3d_libs" \
+CPPFLAG="-P" \
+CPPOPT="-DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include" \
+AROPT="rusc" \
+RANLIB="true" \
+CPP="cpp" \
+CFLAG="" \
+LLIBS="-L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns  " \
+FTN="mpif90" \
+DIR="cfl/libs" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+HEADER="../../../header" )
+                                                              
+( cd cfl/mpi; make -f makefile cfl3d_mpi \
+FFLAG="-acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8 " \
+FFLAG_SPEC="-acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8 " \
+LFLAG="-Wl,-Bdynamic -Wl,-z muldefs" \
+EXEC="cfl3d_mpi" \
+CPPFLAG="-P" \
+CPPOPT=" -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include" \
+AROPT="rusc" \
+RANLIB="true" \
+CPP="cpp" \
+LLIBS="-L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns  " \
+FTN="mpif90" \
+DIR="cfl/mpi" \
+CFLSRC_D="../../../source/cfl3d/dist" \
+CFLSRC_S="../../../source/cfl3d/libs" \
+HEADER="../../../header" )
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cfl/mpi”
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ccomplex.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c development.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c main.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c bc_blkint.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c findmin_new.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c plot3d.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rrest.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c bc_patch.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c forceout.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c plot3t.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rrestg.F
+mpif90 -DDIST_MPI -DDBLE_PRECSN -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c calyplus.F
+make[1]: 进入目录“/home/asc18/zjw/CFL3D/build/cfl/libs”
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c module_kwstm.F90
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c fhat.F
+make[1]: *** mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c tinvr.F
+没有规则可以创建“pointers.o”需要的目标“../libs/module_kwstm.o”。 停止。
+make[1]: *** 正在等待未完成的任务....
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c tmetric.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c trace.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c trans.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c transmc.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c transp.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c vlutrp.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c xe.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c xlim.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c unld_qc.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c xtbatb.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rie1d.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rie1de.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rotateq.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rotateq0.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rotatmc.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rotatp.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c twoeqn.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rp3d.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c setblk.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c setdqc0.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c triv.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c setqc0.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c swafi.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c swafj.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c swafk.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c af3f.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c update.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c cellvol.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c chkrap.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c chksym.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c gfluxv.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c hfluxv.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ffluxv.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c bcchk.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c blomax.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dird.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c direct.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ctime1.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c dthole.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c diagnos.F
+  0 inform,   1 warnings,   0 severes, 0 fatal for xlim
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c fa2xi.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c fa2xj.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c fa2xk.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ffluxr.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c gfluxr.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c hfluxr.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c fluxm.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c fluxp.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c force.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c coll2q.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c collq.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c collqc0.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c collapse.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c collxt.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rotate.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rsmooth.F
+PGF90-S-0155-Procedures called in a compute region must have acc routine information: ccabs (fhat.F: 274)
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c shear.F
+PGF90-S-0155-Accelerator region ignored; see -Minfo messages  (fhat.F: 208)
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c topol2.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c xe2.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c vlutr.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c rechk.F
+  0 inform,   1 warnings,   0 severes, 0 fatal for ctime1
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c metric.F
+fhat:
+    208, Accelerator region ignored
+    274, Accelerator restriction: call to 'ccabs' with no acc routine information
+  0 inform,   0 warnings,   2 severes, 0 fatal for fhat
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c invert.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ld_datj.F
+  0 inform,   1 warnings,   0 severes, 0 fatal for findmin_new
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ld_datk.F
+mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -DDBLE_PRECSN -I/home/asc18/zjw/CFL3D/external/cgns/include -acc -Minfo=accel -ta=tesla:cc60 -O2 -g -w -module /home/asc18/zjw/CFL3D/build/cfl/libs -r8  -c ld_dati.F
+make[1]: *** [fhat.o] 错误 2
+make[1]: *** 正在等待未完成的任务....
+  0 inform,   1 warnings,   0 severes, 0 fatal for ffluxr
+  0 inform,   1 warnings,   0 severes, 0 fatal for plot3t
+  0 inform,   1 warnings,   0 severes, 0 fatal for gfluxr
+  0 inform,   1 warnings,   0 severes, 0 fatal for collapse
+  0 inform,   1 warnings,   0 severes, 0 fatal for hfluxr
+  0 inform,   1 warnings,   0 severes, 0 fatal for diagnos
+  0 inform,   1 warnings,   0 severes, 0 fatal for shear
+  0 inform,   1 warnings,   0 severes, 0 fatal for plot3d
+  0 inform,   1 warnings,   0 severes, 0 fatal for get_source
+  0 inform,   1 warnings,   0 severes, 0 fatal for twoeqn
