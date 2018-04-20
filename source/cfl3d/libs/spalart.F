@@ -505,6 +505,7 @@ c       Interior points
           kl=k-1
           ku=k+1
           do i=1,idim-1
+cdir$ simd
             do j=1,jdim-1
               volku=vol(j,ku,i)
               xp=sk(j,k+1,i,1)*sk(j,k+1,i,4)/(0.5*(vol(j,k,i)
@@ -569,6 +570,7 @@ c       K0 boundary points
           kl=1
           ku=min(2,kdim-1)
           do i=1,idim-1
+cidr$ simd
             do j=1,jdim-1
               volku=vol(j,ku,i)
               xp=sk(j,k+1,i,1)*sk(j,k+1,i,4)/(0.5*(vol(j,k,i)
@@ -632,6 +634,7 @@ c       KDIM boundary points
           kl=kdim-2
           ku=kdim-1
           do i=1,idim-1
+cid$ simd
             do j=1,jdim-1
               volku=volk0(j,i,3)
               xp=sk(j,k+1,i,1)*sk(j,k+1,i,4)/(0.5*(vol(j,k,i)
@@ -693,6 +696,7 @@ c    Advective terms in eta
         if (iturbord .eq. 1) then
         do k=1,kdim-1
           do i=1,idim-1
+cdir$ simd private(uu)
             do j=1,jdim-1
               xc=0.5*(sk(j,k+1,i,1)*sk(j,k+1,i,4)+
      +                sk(j,k,i  ,1)*sk(j,k,i  ,4))/vol(j,k,i)
@@ -715,6 +719,7 @@ c    Advective terms in eta
 c       2nd order upwind; LHS remains 1st order everywhere
         do k=1,kdim-1
           do i=1,idim-1
+cdir$ simd private(uu)
             do j=1,jdim-1
               xc=0.5*(sk(j,k+1,i,1)*sk(j,k+1,i,4)+
      +                sk(j,k,i  ,1)*sk(j,k,i  ,4))/vol(j,k,i)
@@ -745,6 +750,7 @@ c       interior points
           jl=j-1
           ju=j+1
           do i=1,idim-1
+cdir$ simd
             do k=1,kdim-1
               volju=vol(ju,k,i)
               xp=sj(j+1,k,i,1)*sj(j+1,k,i,4)/(0.5*(vol(j,k,i)
@@ -808,6 +814,7 @@ c       J0 boundary points
           jl=1
           ju=min(2,jdim-1)
           do i=1,idim-1
+cdir$ simd
             do k=1,kdim-1
               volju=vol(ju,k,i)
               xp=sj(j+1,k,i,1)*sj(j+1,k,i,4)/(0.5*(vol(j,k,i)
@@ -870,6 +877,7 @@ c       JDIM boundary points
           jl=jdim-2
           ju=jdim-1
           do i=1,idim-1
+cdir$ simd
             do k=1,kdim-1
               volju=volj0(k,i,3)
               xp=sj(j+1,k,i,1)*sj(j+1,k,i,4)/(0.5*(vol(j,k,i)
@@ -931,6 +939,7 @@ c    Advective terms in xi
         if (iturbord .eq. 1) then
         do i=1,idim-1
           do k=1,kdim-1
+cdir$ simd private(uu)
             do j=1,jdim-1
               xc=0.5*(sj(j+1,k,i,1)*sj(j+1,k,i,4)+
      +                sj(j,k,i  ,1)*sj(j,k,i  ,4))/vol(j,k,i)
@@ -953,6 +962,7 @@ c    Advective terms in xi
 c       2nd order upwind; LHS remains 1st order everywhere
         do i=1,idim-1
           do k=1,kdim-1
+cdir$ simd private(uu)
             do j=1,jdim-1
               xc=0.5*(sj(j+1,k,i,1)*sj(j+1,k,i,4)+
      +                sj(j,k,i  ,1)*sj(j,k,i  ,4))/vol(j,k,i)
@@ -984,6 +994,7 @@ c         Interior points
             il=i-1
             iu=i+1
             do k=1,kdim-1
+cdir$ simd
               do j=1,jdim-1
                 voliu=vol(j,k,iu)
                 xp=si(j,k,i+1,1)*si(j,k,i+1,4)/(0.5*(vol(j,k,i)
@@ -1050,6 +1061,7 @@ c         I0 boundary points
             il=1
             iu=min(2,idim-1)
             do k=1,kdim-1
+cdir$ simd
               do j=1,jdim-1
                 voliu=vol(j,k,iu)
                 xp=si(j,k,i+1,1)*si(j,k,i+1,4)/(0.5*(vol(j,k,i)
@@ -1115,6 +1127,7 @@ c         IDIM boundary points
             il=idim-2
             iu=idim-1
             do k=1,kdim-1
+cdir$ simd
               do j=1,jdim-1
                 voliu=voli0(j,k,3)
                 xp=si(j,k,i+1,1)*si(j,k,i+1,4)/(0.5*(vol(j,k,i)
@@ -1178,6 +1191,7 @@ c    Advective terms in zeta
         if (iturbord .eq. 1) then
           do i=1,idim-1
             do k=1,kdim-1
+cdir$ simd private(uu)
               do j=1,jdim-1
                 xc=0.5*(si(j,k,i+1,1)*si(j,k,i+1,4)+
      +                  si(j,k,i  ,1)*si(j,k,i  ,4))/vol(j,k,i)
@@ -1201,6 +1215,7 @@ c    Advective terms in zeta
 c       2nd order upwind; LHS remains 1st order everywhere
           do i=1,idim-1
             do k=1,kdim-1
+cdir$ simd private(uu)
               do j=1,jdim-1
                 xc=0.5*(si(j,k,i+1,1)*si(j,k,i+1,4)+
      +                  si(j,k,i  ,1)*si(j,k,i  ,4))/vol(j,k,i)
@@ -1258,6 +1273,7 @@ c     (later, damp1 is used to store LHS implicit contribution)
 c       DES
         do i=1,idim-1
           do j=1,jdim-1
+cdir$ simd private(deltaj, deltak, deltai, delta)
             do k=1,kdim-1
               deltaj = 2.*vol(j,k,i)/(sj(j,k,i,4)+sj(j+1,k,i,4))
               deltak = 2.*vol(j,k,i)/(sk(j,k,i,4)+sk(j,k+1,i,4))
@@ -1278,6 +1294,7 @@ c
 c       DDES (TCFD 20:181-195, 2006)
         do i=1,idim-1
           do j=1,jdim-1
+cdir$ simd private(deltaj, deltak, deltai, delta)
             do k=1,kdim-1
               deltaj = 2.*vol(j,k,i)/(sj(j,k,i,4)+sj(j+1,k,i,4))
               deltak = 2.*vol(j,k,i)/(sk(j,k,i,4)+sk(j,k+1,i,4))
@@ -1309,6 +1326,7 @@ c
         else
         do i=1,idim-1
           do j=1,jdim-1
+cdir$ simd
             do k=1,kdim-1
               damp1(j,k,i) = ccabs(smin(j,k,i))
             enddo

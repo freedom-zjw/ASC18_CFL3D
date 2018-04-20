@@ -3,22 +3,22 @@ make scruball  -j
 make linkall -j
 make cfl3d_libs -j
 make cfl3d_mpi  -j
-make cfl3d_seq  -j   
-make cfl3dcmplx_libs  -j
-make cfl3dcmplx_mpi  -j
-make cfl3dcmplx_seq  -j
-make precfl3d    -j    
-make ronnie  -j    
-make preronnie  -j   
-make maggie -j 
+#make cfl3d_seq  -j   
+#make cfl3dcmplx_libs  -j
+#make cfl3dcmplx_mpi  -j
+#make cfl3dcmplx_seq  -j
+#make precfl3d    -j    
+#make ronnie  -j    
+#make preronnie  -j   
+#make maggie -j 
 make splitter -j       
-make splittercmplx -j
-make cfl3d_tools -j 
+#make splittercmplx -j
+#make cfl3d_tools -j 
 
 cd precfl/seq 
 #    mpif90 -DP3D_SINGLE -DLINUX -DINTEL -DPG -DCGNS -I../../../external/cgns/include -Wl,-Bdynamic -Wl,-z muldefs  -o precfl3d sizer.o get_cmd_args.o rpatch0.o outbuf.o getibk0.o global.o global2.o pointers.o compg2n.o umalloc.o cntsurf.o lead.o pre_patch.o pre_blockbc.o pre_embed.o pre_period.o usrint.o termn8.o getdhdr.o global0.o readkey.o parser.o ccomplex.o cgnstools.o setseg.o my_flush.o main.o  -L../../../external/cgns/lib  -lcgns  -L../../cfl/libs -lcommon
 
-    mpiifort -DP3D_SINGLE -DLINUX -DINTEL -DCGNS  -I../../../external/cgns/include -z muldefs -xHost -traceback -fpe0 -o precfl3d sizer.o get_cmd_args.o rpatch0.o outbuf.o getibk0.o global.o global2.o pointers.o compg2n.o umalloc.o cntsurf.o lead.o pre_patch.o pre_blockbc.o pre_embed.o pre_period.o usrint.o termn8.o getdhdr.o global0.o readkey.o parser.o ccomplex.o cgnstools.o setseg.o my_flush.o main.o  -L../../../external/cgns/lib  -lcgns  -L../../cfl/libs -lcommon
+    mpiifort -DP3D_SINGLE -DLINUX -DINTEL -DCGNS  -I../../../external/cgns/include -z muldefs -xHost -traceback -o precfl3d sizer.o get_cmd_args.o rpatch0.o outbuf.o getibk0.o global.o global2.o pointers.o compg2n.o umalloc.o cntsurf.o lead.o pre_patch.o pre_blockbc.o pre_embed.o pre_period.o usrint.o termn8.o getdhdr.o global0.o readkey.o parser.o ccomplex.o cgnstools.o setseg.o my_flush.o main.o  -L../../../external/cgns/lib  -lcgns  -L../../cfl/libs -lcommon
 cd ../..
 
 

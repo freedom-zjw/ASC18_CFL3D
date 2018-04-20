@@ -1,0 +1,1 @@
+../../../source/tools/v6inpswitchijk.F

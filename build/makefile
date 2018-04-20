@@ -46,11 +46,11 @@
 # *************** COMPILER FLAG DEFINITIONS (MACHINE SPECIFIC) ***************
 #                 (CURRENT DEFINITIONS FOR LINUX ARCHITECTURE)
 
-FFLAG        = -O3 -w -ipo -ip -fno-alias -xHost -traceback -fpe0 -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD)
-FFLAG_SPEC   = -O3 -w -ipo -ip -fno-alias -xHost -traceback -fpe0 -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD)
+FFLAG        = -O2 -w -ip -fno-alias -xHost -qopt-report -qopt-report-phase:vec -traceback -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD)
+FFLAG_SPEC   = -O2 -w -ip -fno-alias -xHost -qopt-report -qopt-report-phase:vec -traceback -module /home/asc18/zjw/CFL3D/build/$(CFLLIBSD)
 PREC         = -r8
 PREC_MPI     = -DDBLE_PRECSN
-LFLAG        = -z muldefs -xHost -traceback -fpe0 
+LFLAG        = -z muldefs -xHost -traceback 
 LLIBS        = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns
 LLIBS_SEQ    = -L/home/asc18/zjw/CFL3D/external/cgns/lib/ -lcgns
 MPI_INCDIR   = 
