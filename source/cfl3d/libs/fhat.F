@@ -69,11 +69,12 @@ c     10.**(-iexp) is machine zero
 c
       zero    = 10.**(-iexp)
       epsa_l  = 2.*epsa_r
+      call c_fhat(n)
 c
 c      delta q across faces t(1-5)
 c
-      x1   = gamma/gm1
-      c1   = 1.e0/gm1
+      x1   = gamma / gm1
+      c1   = 1.e0  / gm1
 c
       if (real(cprec) .eq. 0.) then
 !DIR$ IVDEP

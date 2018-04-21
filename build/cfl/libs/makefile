@@ -16,6 +16,7 @@ lncode:
 	@ echo "        linking source code"
 	ln -sf $(CFLSRC_S)/*.F .
 	ln -sf $(CFLSRC_S)/*.F90 .
+	ln -sf $(CFLSRC_S)/*.c .
 
 lnhead:
 
@@ -110,6 +111,8 @@ FOBJ_SPEC = $(FSRC_SPEC:.F=.o)
 
 F90OBJ_LIBS = $(F90SRC_LIBS:.F90=.o) 
 
+COBJ_LIBS = c_fhat.o
+
 COMMONLIB = libcommon.a
 
 initvist.o: module_kwstm.o
@@ -121,8 +124,8 @@ bc2005i_d.o: module_stm_2005.o
 bc2005j_d.o: module_stm_2005.o
 bc2005k_d.o: module_stm_2005.o
 
-$(COMMONLIB): $(FSRC_LIBS) $(FOBJ_LIBS) $(FSRC_SPEC) $(FOBJ_SPEC) $(F90OBJ_LIBS)
-	ar $(AROPT) $(COMMONLIB) $(FOBJ_LIBS) $(F90OBJ_LIBS) $(FOBJ_SPEC)
+$(COMMONLIB): $(COBJ_LIBS) $(FSRC_LIBS) $(FOBJ_LIBS) $(FSRC_SPEC) $(FOBJ_SPEC) $(F90OBJ_LIBS)
+	ar $(AROPT) $(COMMONLIB) $(FOBJ_LIBS) $(F90OBJ_LIBS) $(FOBJ_SPEC) $(COBJ_LIBS)
 	@$(RANLIB) $(COMMONLIB)
 
 $(FOBJ_LIBS): 
@@ -130,6 +133,9 @@ $(FOBJ_LIBS):
 
 $(FOBJ_SPEC):
 	$(FTN) $(CPPOPT) $(FFLAG_SPEC) -c $*.F
+
+$(COBJ_LIBS):
+	$(CC) $(CPPOPT) -c $*.c
 
 $(EXEC): $(COMMONLIB)
 	@ echo "                                                              "
