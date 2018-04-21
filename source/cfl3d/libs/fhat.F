@@ -69,12 +69,19 @@ c     10.**(-iexp) is machine zero
 c
       zero    = 10.**(-iexp)
       epsa_l  = 2.*epsa_r
-      call c_fhat(n)
 c
 c      delta q across faces t(1-5)
 c
-      x1   = gamma / gm1
-      c1   = 1.e0  / gm1
+      x1   = gamma/gm1
+      c1   = 1.e0/gm1
+c
+c     Call C functions to handle it
+c
+      write (*,*) ax(1), ay(1), az(1)
+      call c_fhat_hookptr(ax, ay, az, area, at, qr, ql, f)
+      call c_fhat(n, iexp, gamma, gm1, gp1, gm1g, 
+     .            gp1g, ggm1, cprec, uref, avn,   
+     .			  epsa_l, epsa_r, x1, c1, zero)
 c
       if (real(cprec) .eq. 0.) then
 !DIR$ IVDEP

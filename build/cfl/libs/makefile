@@ -112,6 +112,7 @@ FOBJ_SPEC = $(FSRC_SPEC:.F=.o)
 F90OBJ_LIBS = $(F90SRC_LIBS:.F90=.o) 
 
 COBJ_LIBS = c_fhat.o
+CFLAGS    = -O2 -g -Wall -xHost -qopenmp
 
 COMMONLIB = libcommon.a
 
@@ -135,7 +136,7 @@ $(FOBJ_SPEC):
 	$(FTN) $(CPPOPT) $(FFLAG_SPEC) -c $*.F
 
 $(COBJ_LIBS):
-	$(CC) $(CPPOPT) -c $*.c
+	$(CC) $(CPPOPT) $(CFLAGS) -c $*.c
 
 $(EXEC): $(COMMONLIB)
 	@ echo "                                                              "
