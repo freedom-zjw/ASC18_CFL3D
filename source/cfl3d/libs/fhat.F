@@ -67,6 +67,58 @@ c     take LHS limiter = 2 x RHS limiter
 c
 c     10.**(-iexp) is machine zero
 c
+c
+c     Call C functions to handle it
+c
+      call c_fhat(n, iexp, nvtq,
+     .            gamma, gm1, gp1, gm1g, gp1g, 
+     .            ggm1, cprec, uref, avn, epsa_r, 
+     .            ax, ay, az, area, at, qr, ql, f)
+
+      return
+      end
+c	  
+c
+c  
+c     Below is the original version
+c	  
+      subroutine fhat_original(ax,ay,az,area,at,f,qr,ql,n,nvtq)
+c
+#   ifdef CMPLX
+      implicit complex(a-h,o-z)
+#   endif
+c
+      dimension ax(n),ay(n),az(n),area(n),at(n),
+     .          qr(nvtq,5),ql(nvtq,5),f(nvtq,5)
+c
+      common /fluid/ gamma,gm1,gp1,gm1g,gp1g,ggm1
+      common /precond/ cprec,uref,avn
+      common /entfix/ epsa_l,epsa_r
+      common /zero/iexp
+#   ifdef CMPLX 
+      complex temp
+#   else
+      real temp
+#   endif
+c
+c     Notes on the entropy fix implemented here and in dfhat, diagj,
+c     diagk, and diagi:
+c
+c     for flow conditions in which the minimum eigenvalue would be
+c     less than 2*epsa, epsa nominally forces the minimum eignvalue
+c     to be 2*maximum eigenvalue = 2*(|ubar|+c); _l and _r simply
+c     denote the limiting values used for the LHS terms and the RHS
+c     terms
+c
+c     below (and on LHS), rather than using |ubar|+c, we use
+c     (|u| + |v| + |w| + c), which should add a bit more dissipation.
+c     this is slighly different from the implementation in LAURA, 
+c     where (|ubar| + |vbar| + |wbar| + c) is used.
+c     
+c     take LHS limiter = 2 x RHS limiter
+c
+c     10.**(-iexp) is machine zero
+c
       zero    = 10.**(-iexp)
       epsa_l  = 2.*epsa_r
 c
