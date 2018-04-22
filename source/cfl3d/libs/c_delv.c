@@ -138,6 +138,170 @@ static void J_direction()
 	}  // for (int i = 0; i < idim1; i++)
 }
 
+// K-direction contributions
+static void K_direction()
+{
+	for (int i = 0; i < idim1; i++)
+	{
+		// Cycle through interfaces
+		for (int k = 1; k < kdim1; k++)
+		{
+			int wt_base1 = wt_ind(0, k, 0);
+			int wt_base2 = wt_ind(0, k, 1);
+			int wt_base3 = wt_ind(0, k, 2);
+			int wt_base4 = wt_ind(0, k, 3);
+			int wt_base5 = wt_ind(0, k, 4);
+			int wt_base6 = wt_ind(0, k, 5);
+			int wt_base7 = wt_ind(0, k, 6);
+			int wt_base8 = wt_ind(0, k, 7);
+			int wt_base9 = wt_ind(0, k, 8);
+			
+			int sk_base1 = sk_ind(0, k, i, 0);
+			int sk_base2 = sk_ind(0, k, i, 1);
+			int sk_base3 = sk_ind(0, k, i, 2);
+			int sk_base4 = sk_ind(0, k, i, 3);
+			
+			int q_base2 = q_ind(0, k, i, 1);
+			int q_base3 = q_ind(0, k, i, 2);
+			int q_base4 = q_ind(0, k, i, 3);
+			
+			int q1_base2 = q_ind(0, k-1, i, 1);
+			int q1_base3 = q_ind(0, k-1, i, 2);
+			int q1_base4 = q_ind(0, k-1, i, 3);
+			
+			int vol_base  = vol_ind(0, k, i);
+			int vol1_base = vol_ind(0, k-1, i);
+			
+			for (int j = 0; j < jdim1; j++)
+			{
+				FTYPE term = sk[sk_base4+j] / (vol[vol_base+j] + vol[vol1_base+j]);
+				wt[wt_base1] = term * ((q[q_base2] - q[q1_base2]) * sk[sk_base1+j]);
+				wt[wt_base2] = term * ((q[q_base2] - q[q1_base2]) * sk[sk_base2+j]);
+				wt[wt_base3] = term * ((q[q_base2] - q[q1_base2]) * sk[sk_base3+j]);
+				wt[wt_base4] = term * ((q[q_base3] - q[q1_base3]) * sk[sk_base1+j]);
+				wt[wt_base5] = term * ((q[q_base3] - q[q1_base3]) * sk[sk_base2+j]);
+				wt[wt_base6] = term * ((q[q_base3] - q[q1_base3]) * sk[sk_base3+j]);
+				wt[wt_base7] = term * ((q[q_base4] - q[q1_base4]) * sk[sk_base1+j]);
+				wt[wt_base8] = term * ((q[q_base4] - q[q1_base4]) * sk[sk_base2+j]);
+				wt[wt_base9] = term * ((q[q_base4] - q[q1_base4]) * sk[sk_base3+j]);
+			}
+		}  // for (int k = 1; k < kdim1; k++)
+		
+		int k = 0;
+		
+		int wt_base1 = wt_ind(0, k, 0);
+		int wt_base2 = wt_ind(0, k, 1);
+		int wt_base3 = wt_ind(0, k, 2);
+		int wt_base4 = wt_ind(0, k, 3);
+		int wt_base5 = wt_ind(0, k, 4);
+		int wt_base6 = wt_ind(0, k, 5);
+		int wt_base7 = wt_ind(0, k, 6);
+		int wt_base8 = wt_ind(0, k, 7);
+		int wt_base9 = wt_ind(0, k, 8);
+		
+		int sk_base1 = sk_ind(0, k, i, 0);
+		int sk_base2 = sk_ind(0, k, i, 1);
+		int sk_base3 = sk_ind(0, k, i, 2);
+		int sk_base4 = sk_ind(0, k, i, 3);
+		
+		int q_base2 = q_ind(0, k, i, 1);
+		int q_base3 = q_ind(0, k, i, 2);
+		int q_base4 = q_ind(0, k, i, 3);
+		
+		int qk0_base2 = qk0_ind(0, i, 1, 0);
+		int qk0_base3 = qk0_ind(0, i, 2, 0);
+		int qk0_base4 = qk0_ind(0, i, 3, 0);
+		
+		int vol_base   = vol_ind(0, k, i);
+		int volk0_base = volk0_ind(0, i, 0);
+		int bck_base   = bck_ind(0, i, 0);
+		
+		for (int j = 0; j < jdim1; j++)
+		{
+			FTYPE term   = sk[sk_base4+j] / (volk0[volk0_base+j] + vol[vol_base+j]);
+			FTYPE factor = bck[bck_base+j] + 1.0;
+			term *= factor;
+			wt[wt_base1+j] = term * ((q[q_base2+j] - qk0[qk0_base2+j]) * sk[sk_base1+j]);
+			wt[wt_base2+j] = term * ((q[q_base2+j] - qk0[qk0_base2+j]) * sk[sk_base2+j]);
+			wt[wt_base3+j] = term * ((q[q_base2+j] - qk0[qk0_base2+j]) * sk[sk_base3+j]);
+			wt[wt_base4+j] = term * ((q[q_base3+j] - qk0[qk0_base3+j]) * sk[sk_base1+j]);
+			wt[wt_base5+j] = term * ((q[q_base3+j] - qk0[qk0_base3+j]) * sk[sk_base2+j]);
+			wt[wt_base6+j] = term * ((q[q_base3+j] - qk0[qk0_base3+j]) * sk[sk_base3+j]);
+			wt[wt_base7+j] = term * ((q[q_base4+j] - qk0[qk0_base4+j]) * sk[sk_base1+j]);
+			wt[wt_base8+j] = term * ((q[q_base4+j] - qk0[qk0_base4+j]) * sk[sk_base2+j]);
+			wt[wt_base9+j] = term * ((q[q_base4+j] - qk0[qk0_base4+j]) * sk[sk_base3+j]);
+		}
+		
+		
+		k = kdim - 1;
+		
+		wt_base1 = wt_ind(0, k, 0);
+		wt_base2 = wt_ind(0, k, 1);
+		wt_base3 = wt_ind(0, k, 2);
+		wt_base4 = wt_ind(0, k, 3);
+		wt_base5 = wt_ind(0, k, 4);
+		wt_base6 = wt_ind(0, k, 5);
+		wt_base7 = wt_ind(0, k, 6);
+		wt_base8 = wt_ind(0, k, 7);
+		wt_base9 = wt_ind(0, k, 8);
+		
+		qk0_base2 = qk0_ind(0, i, 1, 2);
+		qk0_base3 = qk0_ind(0, i, 2, 2);
+		qk0_base4 = qk0_ind(0, i, 3, 2);
+		
+		q_base2 = q_ind(0, k-1, i, 1);
+		q_base3 = q_ind(0, k-1, i, 2);
+		q_base4 = q_ind(0, k-1, i, 3);
+		
+		sk_base1 = sk_ind(0, k, i, 0);
+		sk_base2 = sk_ind(0, k, i, 1);
+		sk_base3 = sk_ind(0, k, i, 2);
+		sk_base4 = sk_ind(0, k, i, 3);
+		
+		vol_base   = vol_ind(0, k-1, i);
+		volk0_base = volk0_ind(0, i, 2);
+		bck_base   = bck_ind(0, i, 1);
+		
+		for (int j = 0; j < jdim1; j++)
+		{
+			FTYPE term   = sk[sk_base4+j] / (volk0[volk0_base+j] + vol[vol_base+j]);
+			FTYPE factor = bck[bck_base+j] + 1.0;
+			term *= factor;
+			wt[wt_base1+j] = term * ((qk0[qk0_base2+j] - q[q_base2+j]) * sk[sk_base1+j]);
+			wt[wt_base2+j] = term * ((qk0[qk0_base2+j] - q[q_base2+j]) * sk[sk_base2+j]);
+			wt[wt_base3+j] = term * ((qk0[qk0_base2+j] - q[q_base2+j]) * sk[sk_base3+j]);
+			wt[wt_base4+j] = term * ((qk0[qk0_base3+j] - q[q_base3+j]) * sk[sk_base1+j]);
+			wt[wt_base5+j] = term * ((qk0[qk0_base3+j] - q[q_base3+j]) * sk[sk_base2+j]);
+			wt[wt_base6+j] = term * ((qk0[qk0_base3+j] - q[q_base3+j]) * sk[sk_base3+j]);
+			wt[wt_base7+j] = term * ((qk0[qk0_base4+j] - q[q_base4+j]) * sk[sk_base1+j]);
+			wt[wt_base8+j] = term * ((qk0[qk0_base4+j] - q[q_base4+j]) * sk[sk_base2+j]);
+			wt[wt_base9+j] = term * ((qk0[qk0_base4+j] - q[q_base4+j]) * sk[sk_base3+j]);
+		}
+		
+		// Cycle through cell centers
+		for (int l = 0; l < 9; l++)
+		{
+			for (int k = 0; k < kdim1; k++)
+			{
+				int ux_base  = ux_ind(0, k, i, l);
+				int wt_base  = wt_ind(0, k, l);
+				int wt_base1 = wt_ind(0, k+1, l);
+				for (int j = 0; j < jdim1; j++)
+				{
+					FTYPE addend = wt[wt_base+j] + wt[wt_base1+j];
+					ux[ux_base+j] += addend;
+				}
+			}
+		} // for (int l = 0; l < 9; l++)
+	}  // for (int i = 0; i < idim1; i++)
+}
+
+// I-direction contributions
+static void I_direction()
+{
+	
+}
+
 static int c_delv_cnt = 0;
 
 void c_delv_(
@@ -193,10 +357,10 @@ void c_delv_(
 	J_direction();
 
 	// K-direction contributions
-
-	// I-direction contributions
+	K_direction();
 	
-	// Set velocity derivatives for hole cells to one
+	// I-direction contributions
+	I_direction();
 
 	c_delv_cnt++;
 }

@@ -87,6 +87,9 @@ c
 c      J-direction contributions is handled by c_delv
 c
 c
+c      K-direction contributions is handled by c_delv
+c
+c
 c      I-direction contributions
 c
       if(ifi .gt. 0) then
