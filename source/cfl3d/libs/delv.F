@@ -66,6 +66,14 @@ c
 c
       common /twod/ i2d
 c
+      write (*,*) jdim,kdim,idim,iover,nbl,maxbl,i2d
+      call c_delv(jdim, kdim, idim, iover, nbl, 
+     .            maxbl, i2d, ivmax, jvmax, kvmax, 
+     .            q, sj, sk, si, vol, 
+     .            ux, wt, blank, qj0, qk0,
+     .            qi0, bcj, bck, bci, volj0,
+     .            volk0, voli0, vormax)
+
       ifi=1
       ifj=1
       ifk=1
