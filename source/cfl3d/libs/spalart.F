@@ -505,7 +505,7 @@ c       Interior points
           kl=k-1
           ku=k+1
           do i=1,idim-1
-cdir$ simd
+cdir$ ivdep
             do j=1,jdim-1
               volku=vol(j,ku,i)
               xp=sk(j,k+1,i,1)*sk(j,k+1,i,4)/(0.5*(vol(j,k,i)
@@ -556,9 +556,18 @@ c
               end if
               cdp=(fnup+(diff_facp+cb2)*anutp)*ttp/(sigma*re)
               cdm=(fnum+(diff_facm+cb2)*anutm)*ttm/(sigma*re)
-              byy=-ccmaxcr(cdm+cam,0.)
-              cyy=ccmaxcr(cdp+cap,0.) + ccmaxcr(cdm+cam,0.)
-              dyy=-ccmaxcr(cdp+cap,0.)
+			  cdmcam=cdm+cam
+			  cdpcap=cdp+cap
+#   ifdef CMPLX
+			  if(real(cdmcam).lt.0.) cdmcam=0.
+			  if(real(cdpcap).lt.0.) cdpcap=0.
+#   else
+              cdmcam=max(cdmcam, 0.)
+			  cdpcap=max(cdpcap, 0.)
+#   endif
+              byy=-cdmcam
+              cyy=cdpcap+cdmcam
+              dyy=-cdpcap
               vist3d(j,k,i)=-byy*turre(j,k-1,i)
      +          -cyy*turre(j,k,i) -dyy*turre(j,k+1,i)
             enddo
@@ -570,7 +579,7 @@ c       K0 boundary points
           kl=1
           ku=min(2,kdim-1)
           do i=1,idim-1
-cidr$ simd
+cidr$ ivdep
             do j=1,jdim-1
               volku=vol(j,ku,i)
               xp=sk(j,k+1,i,1)*sk(j,k+1,i,4)/(0.5*(vol(j,k,i)
@@ -621,9 +630,18 @@ c
               end if
               cdp=(fnup+(diff_facp+cb2)*anutp)*ttp/(sigma*re)
               cdm=(fnum+(diff_facm+cb2)*anutm)*ttm/(sigma*re)
-              byy=-ccmaxcr(cdm+cam,0.)
-              cyy=ccmaxcr(cdp+cap,0.) + ccmaxcr(cdm+cam,0.)
-              dyy=-ccmaxcr(cdp+cap,0.)
+			  cdmcam=cdm+cam
+			  cdpcap=cdp+cap
+#   ifdef CMPLX
+			  if(real(cdmcam).lt.0.) cdmcam=0.
+			  if(real(cdpcap).lt.0.) cdpcap=0.
+#   else
+              cdmcam=max(cdmcam, 0.)
+			  cdpcap=max(cdpcap, 0.)
+#   endif
+              byy=-cdmcam
+              cyy=cdpcap+cdmcam
+              dyy=-cdpcap
               vist3d(j,k,i)=-byy*turre(j,k-1,i)
      +          -cyy*turre(j,k,i) -dyy*turre(j,k+1,i)
             enddo
@@ -634,7 +652,7 @@ c       KDIM boundary points
           kl=kdim-2
           ku=kdim-1
           do i=1,idim-1
-cid$ simd
+cid$ ivdep
             do j=1,jdim-1
               volku=volk0(j,i,3)
               xp=sk(j,k+1,i,1)*sk(j,k+1,i,4)/(0.5*(vol(j,k,i)
@@ -685,9 +703,18 @@ c
               end if
               cdp=(fnup+(diff_facp+cb2)*anutp)*ttp/(sigma*re)
               cdm=(fnum+(diff_facm+cb2)*anutm)*ttm/(sigma*re)
-              byy=-ccmaxcr(cdm+cam,0.)
-              cyy=ccmaxcr(cdp+cap,0.) + ccmaxcr(cdm+cam,0.)
-              dyy=-ccmaxcr(cdp+cap,0.)
+			  cdmcam=cdm+cam
+			  cdpcap=cdp+cap
+#   ifdef CMPLX
+			  if(real(cdmcam).lt.0.) cdmcam=0.
+			  if(real(cdpcap).lt.0.) cdpcap=0.
+#   else
+              cdmcam=max(cdmcam, 0.)
+			  cdpcap=max(cdpcap, 0.)
+#   endif
+              byy=-cdmcam
+              cyy=cdpcap+cdmcam
+              dyy=-cdpcap
               vist3d(j,k,i)=-byy*turre(j,k-1,i)
      +          -cyy*turre(j,k,i) -dyy*turre(j,k+1,i)
             enddo
@@ -696,7 +723,7 @@ c    Advective terms in eta
         if (iturbord .eq. 1) then
         do k=1,kdim-1
           do i=1,idim-1
-cdir$ simd private(uu)
+cdir$ ivdep private(uu)
             do j=1,jdim-1
               xc=0.5*(sk(j,k+1,i,1)*sk(j,k+1,i,4)+
      +                sk(j,k,i  ,1)*sk(j,k,i  ,4))/vol(j,k,i)
@@ -719,7 +746,7 @@ cdir$ simd private(uu)
 c       2nd order upwind; LHS remains 1st order everywhere
         do k=1,kdim-1
           do i=1,idim-1
-cdir$ simd private(uu)
+cdir$ ivdep private(uu)
             do j=1,jdim-1
               xc=0.5*(sk(j,k+1,i,1)*sk(j,k+1,i,4)+
      +                sk(j,k,i  ,1)*sk(j,k,i  ,4))/vol(j,k,i)
@@ -750,7 +777,7 @@ c       interior points
           jl=j-1
           ju=j+1
           do i=1,idim-1
-cdir$ simd
+cdir$ ivdep
             do k=1,kdim-1
               volju=vol(ju,k,i)
               xp=sj(j+1,k,i,1)*sj(j+1,k,i,4)/(0.5*(vol(j,k,i)
@@ -801,9 +828,18 @@ c
               end if
               cdp=(fnup+(diff_facp+cb2)*anutp)*ttp/(sigma*re)
               cdm=(fnum+(diff_facm+cb2)*anutm)*ttm/(sigma*re)
-              bxx=-ccmaxcr(cdm+cam,0.)
-              cxx=ccmaxcr(cdp+cap,0.) + ccmaxcr(cdm+cam,0.)
-              dxx=-ccmaxcr(cdp+cap,0.)
+			  cdmcam=cdm+cam
+			  cdpcap=cdp+cap
+#   ifdef CMPLX
+			  if(real(cdmcam).lt.0.) cdmcam=0.
+			  if(real(cdpcap).lt.0.) cdpcap=0.
+#   else
+              cdmcam=max(cdmcam, 0.)
+			  cdpcap=max(cdpcap, 0.)
+#   endif
+              bxx=-cdmcam
+              cxx=cdpcap+cdmcam
+              dxx=-cdpcap
               vist3d(j,k,i)=vist3d(j,k,i)-bxx*turre(j-1,k,i)
      +          -cxx*turre(j,k,i) -dxx*turre(j+1,k,i)
             enddo
@@ -814,7 +850,7 @@ c       J0 boundary points
           jl=1
           ju=min(2,jdim-1)
           do i=1,idim-1
-cdir$ simd
+cdir$ ivdep
             do k=1,kdim-1
               volju=vol(ju,k,i)
               xp=sj(j+1,k,i,1)*sj(j+1,k,i,4)/(0.5*(vol(j,k,i)
@@ -865,9 +901,18 @@ c
               end if
               cdp=(fnup+(diff_facp+cb2)*anutp)*ttp/(sigma*re)
               cdm=(fnum+(diff_facm+cb2)*anutm)*ttm/(sigma*re)
-              bxx=-ccmaxcr(cdm+cam,0.)
-              cxx=ccmaxcr(cdp+cap,0.) + ccmaxcr(cdm+cam,0.)
-              dxx=-ccmaxcr(cdp+cap,0.)
+			  cdmcam=cdm+cam
+			  cdpcap=cdp+cap
+#   ifdef CMPLX
+			  if(real(cdmcam).lt.0.) cdmcam=0.
+			  if(real(cdpcap).lt.0.) cdpcap=0.
+#   else
+              cdmcam=max(cdmcam, 0.)
+			  cdpcap=max(cdpcap, 0.)
+#   endif
+              bxx=-cdmcam
+              cxx=cdpcap+cdmcam
+              dxx=-cdpcap
               vist3d(j,k,i)=vist3d(j,k,i)-bxx*turre(j-1,k,i)
      +          -cxx*turre(j,k,i) -dxx*turre(j+1,k,i)
             enddo
@@ -877,7 +922,7 @@ c       JDIM boundary points
           jl=jdim-2
           ju=jdim-1
           do i=1,idim-1
-cdir$ simd
+cdir$ ivdep
             do k=1,kdim-1
               volju=volj0(k,i,3)
               xp=sj(j+1,k,i,1)*sj(j+1,k,i,4)/(0.5*(vol(j,k,i)
@@ -928,9 +973,18 @@ c
               end if
               cdp=(fnup+(diff_facp+cb2)*anutp)*ttp/(sigma*re)
               cdm=(fnum+(diff_facm+cb2)*anutm)*ttm/(sigma*re)
-              bxx=-ccmaxcr(cdm+cam,0.)
-              cxx=ccmaxcr(cdp+cap,0.) + ccmaxcr(cdm+cam,0.)
-              dxx=-ccmaxcr(cdp+cap,0.)
+			  cdmcam=cdm+cam
+			  cdpcap=cdp+cap
+#   ifdef CMPLX
+			  if(real(cdmcam).lt.0.) cdmcam=0.
+			  if(real(cdpcap).lt.0.) cdpcap=0.
+#   else
+              cdmcam=max(cdmcam, 0.)
+			  cdpcap=max(cdpcap, 0.)
+#   endif
+              bxx=-cdmcam
+              cxx=cdpcap+cdmcam
+              dxx=-cdpcap
               vist3d(j,k,i)=vist3d(j,k,i)-bxx*turre(j-1,k,i)
      +          -cxx*turre(j,k,i) -dxx*turre(j+1,k,i)
             enddo
@@ -939,7 +993,7 @@ c    Advective terms in xi
         if (iturbord .eq. 1) then
         do i=1,idim-1
           do k=1,kdim-1
-cdir$ simd private(uu)
+cdir$ ivdep private(uu)
             do j=1,jdim-1
               xc=0.5*(sj(j+1,k,i,1)*sj(j+1,k,i,4)+
      +                sj(j,k,i  ,1)*sj(j,k,i  ,4))/vol(j,k,i)
@@ -962,7 +1016,7 @@ cdir$ simd private(uu)
 c       2nd order upwind; LHS remains 1st order everywhere
         do i=1,idim-1
           do k=1,kdim-1
-cdir$ simd private(uu)
+cdir$ ivdep private(uu)
             do j=1,jdim-1
               xc=0.5*(sj(j+1,k,i,1)*sj(j+1,k,i,4)+
      +                sj(j,k,i  ,1)*sj(j,k,i  ,4))/vol(j,k,i)
@@ -994,7 +1048,7 @@ c         Interior points
             il=i-1
             iu=i+1
             do k=1,kdim-1
-cdir$ simd
+cdir$ ivdep
               do j=1,jdim-1
                 voliu=vol(j,k,iu)
                 xp=si(j,k,i+1,1)*si(j,k,i+1,4)/(0.5*(vol(j,k,i)
@@ -1047,9 +1101,18 @@ c
                 end if
                 cdp=(fnup+(diff_facp+cb2)*anutp)*ttp/(sigma*re)
                 cdm=(fnum+(diff_facm+cb2)*anutm)*ttm/(sigma*re)
-                bzz=-ccmaxcr(cdm+cam,0.)
-                czz=ccmaxcr(cdp+cap,0.) + ccmaxcr(cdm+cam,0.)
-                dzz=-ccmaxcr(cdp+cap,0.)
+			    cdmcam=cdm+cam
+			    cdpcap=cdp+cap
+#   ifdef CMPLX
+			    if(real(cdmcam).lt.0.) cdmcam=0.
+			    if(real(cdpcap).lt.0.) cdpcap=0.
+#   else
+                cdmcam=max(cdmcam, 0.)
+			    cdpcap=max(cdpcap, 0.)
+#   endif
+                bzz=-cdmcam
+                czz=cdpcap+cdmcam
+                dzz=-cdpcap
                 vist3d(j,k,i)=vist3d(j,k,i)-bzz*turre(j,k,i-1)
      +            -czz*turre(j,k,i) -dzz*turre(j,k,i+1)
               enddo
@@ -1061,7 +1124,7 @@ c         I0 boundary points
             il=1
             iu=min(2,idim-1)
             do k=1,kdim-1
-cdir$ simd
+cdir$ ivdep
               do j=1,jdim-1
                 voliu=vol(j,k,iu)
                 xp=si(j,k,i+1,1)*si(j,k,i+1,4)/(0.5*(vol(j,k,i)
@@ -1114,9 +1177,18 @@ c
                 end if
                 cdp=(fnup+(diff_facp+cb2)*anutp)*ttp/(sigma*re)
                 cdm=(fnum+(diff_facm+cb2)*anutm)*ttm/(sigma*re)
-                bzz=-ccmaxcr(cdm+cam,0.)
-                czz=ccmaxcr(cdp+cap,0.) + ccmaxcr(cdm+cam,0.)
-                dzz=-ccmaxcr(cdp+cap,0.)
+			    cdmcam=cdm+cam
+			    cdpcap=cdp+cap
+#   ifdef CMPLX
+			    if(real(cdmcam).lt.0.) cdmcam=0.
+			    if(real(cdpcap).lt.0.) cdpcap=0.
+#   else
+                cdmcam=max(cdmcam, 0.)
+			    cdpcap=max(cdpcap, 0.)
+#   endif
+                bzz=-cdmcam
+                czz=cdpcap+cdmcam
+                dzz=-cdpcap
                 vist3d(j,k,i)=vist3d(j,k,i)-bzz*turre(j,k,i-1)
      +            -czz*turre(j,k,i) -dzz*turre(j,k,i+1)
               enddo
@@ -1127,7 +1199,7 @@ c         IDIM boundary points
             il=idim-2
             iu=idim-1
             do k=1,kdim-1
-cdir$ simd
+cdir$ ivdep
               do j=1,jdim-1
                 voliu=voli0(j,k,3)
                 xp=si(j,k,i+1,1)*si(j,k,i+1,4)/(0.5*(vol(j,k,i)
@@ -1180,9 +1252,18 @@ c
                 end if
                 cdp=(fnup+(diff_facp+cb2)*anutp)*ttp/(sigma*re)
                 cdm=(fnum+(diff_facm+cb2)*anutm)*ttm/(sigma*re)
-                bzz=-ccmaxcr(cdm+cam,0.)
-                czz=ccmaxcr(cdp+cap,0.) + ccmaxcr(cdm+cam,0.)
-                dzz=-ccmaxcr(cdp+cap,0.)
+			    cdmcam=cdm+cam
+			    cdpcap=cdp+cap
+#   ifdef CMPLX
+			    if(real(cdmcam).lt.0.) cdmcam=0.
+			    if(real(cdpcap).lt.0.) cdpcap=0.
+#   else
+                cdmcam=max(cdmcam, 0.)
+			    cdpcap=max(cdpcap, 0.)
+#   endif
+                bzz=-cdmcam
+                czz=cdpcap+cdmcam
+                dzz=-cdpcap
                 vist3d(j,k,i)=vist3d(j,k,i)-bzz*turre(j,k,i-1)
      +            -czz*turre(j,k,i) -dzz*turre(j,k,i+1)
               enddo
@@ -1191,7 +1272,7 @@ c    Advective terms in zeta
         if (iturbord .eq. 1) then
           do i=1,idim-1
             do k=1,kdim-1
-cdir$ simd private(uu)
+cdir$ ivdep private(uu)
               do j=1,jdim-1
                 xc=0.5*(si(j,k,i+1,1)*si(j,k,i+1,4)+
      +                  si(j,k,i  ,1)*si(j,k,i  ,4))/vol(j,k,i)
@@ -1215,7 +1296,7 @@ cdir$ simd private(uu)
 c       2nd order upwind; LHS remains 1st order everywhere
           do i=1,idim-1
             do k=1,kdim-1
-cdir$ simd private(uu)
+cdir$ ivdep private(uu)
               do j=1,jdim-1
                 xc=0.5*(si(j,k,i+1,1)*si(j,k,i+1,4)+
      +                  si(j,k,i  ,1)*si(j,k,i  ,4))/vol(j,k,i)
@@ -1226,10 +1307,10 @@ cdir$ simd private(uu)
                 tc=0.5*(si(j,k,i+1,5)*si(j,k,i+1,4)+
      +                  si(j,k,i  ,5)*si(j,k,i  ,4))/vol(j,k,i)
                 uu=xc*q(j,k,i,2)+yc*q(j,k,i,3)+zc*q(j,k,i,4)+tc
-              sgnu=ccsignrc(1.,uu)
-              app=0.5*(1.+sgnu)
-              apm=0.5*(1.-sgnu)
-              vist3d(j,k,i)=vist3d(j,k,i)-0.5*uu*app*turre(j,k,i-2)
+                sgnu=ccsignrc(1.,uu)
+                app=0.5*(1.+sgnu)
+                apm=0.5*(1.-sgnu)
+                vist3d(j,k,i)=vist3d(j,k,i)-0.5*uu*app*turre(j,k,i-2)
      +                                    +2.*uu*app*turre(j,k,i-1)
      +                                   -1.5*uu*app*turre(j,k,i)
      +                                   +1.5*uu*apm*turre(j,k,i)
@@ -1273,7 +1354,7 @@ c     (later, damp1 is used to store LHS implicit contribution)
 c       DES
         do i=1,idim-1
           do j=1,jdim-1
-cdir$ simd private(deltaj, deltak, deltai, delta)
+cdir$ ivdep private(deltaj, deltak, deltai, delta)
             do k=1,kdim-1
               deltaj = 2.*vol(j,k,i)/(sj(j,k,i,4)+sj(j+1,k,i,4))
               deltak = 2.*vol(j,k,i)/(sk(j,k,i,4)+sk(j,k+1,i,4))
@@ -1294,7 +1375,7 @@ c
 c       DDES (TCFD 20:181-195, 2006)
         do i=1,idim-1
           do j=1,jdim-1
-cdir$ simd private(deltaj, deltak, deltai, delta)
+cdir$ ivdep private(deltaj, deltak, deltai, delta)
             do k=1,kdim-1
               deltaj = 2.*vol(j,k,i)/(sj(j,k,i,4)+sj(j+1,k,i,4))
               deltak = 2.*vol(j,k,i)/(sk(j,k,i,4)+sk(j,k+1,i,4))
@@ -1326,7 +1407,7 @@ c
         else
         do i=1,idim-1
           do j=1,jdim-1
-cdir$ simd
+cdir$ ivdep
             do k=1,kdim-1
               damp1(j,k,i) = ccabs(smin(j,k,i))
             enddo
