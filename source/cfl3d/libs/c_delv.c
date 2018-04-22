@@ -510,6 +510,29 @@ static void I_direction()
 	}  // for (int k = 0; k < kdim1; k++)
 }
 
+// Set velocity derivatives for hole cells to one
+static void hole_to_1()
+{
+	if (iover != 1) return;
+	
+	for (int nk = 0; nk < 9; nk++)
+	{
+		for (int i = 0; i < idim1; i++)
+		{
+			for (int k = 0; k < kdim1; k++)
+			{
+				int ux_base = ux_ind(0, k, i, nk);
+				int blank_base = blank_ind(0, k, i);
+				for (int j = 0; j < jdim1; j++)
+				{
+					if (creal(blank[blank_base + j]) == 0.0) 
+						ux[ux_base + j] = 1.0;
+				}
+			}
+		}
+	}
+}
+
 static int c_delv_cnt = 0;
 
 void c_delv_(
@@ -521,7 +544,7 @@ void c_delv_(
 	FTYPE *_volk0, FTYPE *_voli0, FTYPE *_vormax
 )
 {
-	if (c_delv_cnt == 0) printf("Using c_delv: J, K, I\n"); fflush(stdout);
+	if (c_delv_cnt == 0) printf("Using c_delv\n"); fflush(stdout);
 	
 	// Single variables
 	jdim  = *_jdim;
@@ -569,6 +592,9 @@ void c_delv_(
 	
 	// I-direction contributions
 	I_direction();
+	
+	// Set velocity derivatives for hole cells to one
+	hole_to_1();
 
 	c_delv_cnt++;
 }
