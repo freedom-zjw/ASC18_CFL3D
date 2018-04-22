@@ -24,6 +24,43 @@ c
      .                qj0,qk0,qi0,bcj,bck,bci,nbl,volj0,volk0,voli0,
      .                maxbl,vormax,ivmax,jvmax,kvmax)
 c
+#   ifdef CMPLX
+      implicit complex(a-h,o-z)
+#   endif
+c
+      dimension q(jdim,kdim,idim,5),ux(jdim-1,kdim-1,idim-1,9)
+      dimension sj(jdim,kdim,idim-1,5),sk(jdim,kdim,idim-1,5),
+     .          si(jdim,kdim,idim,5)
+      dimension vol(jdim,kdim,idim-1),blank(jdim,kdim,idim)
+      dimension wt(jdim,kdim,9)
+      dimension bcj(kdim,idim-1,2),bck(jdim,idim-1,2),bci(jdim,kdim,2)
+      dimension qj0(kdim,idim-1,5,4),
+     .          qk0(jdim,idim-1,5,4),qi0(jdim,kdim,5,4)
+      dimension volj0(kdim,idim-1,4),
+     .          volk0(jdim,idim-1,4),voli0(jdim,kdim,4)
+      dimension vormax(maxbl),ivmax(maxbl),jvmax(maxbl),kvmax(maxbl)
+c
+      common /twod/ i2d
+c
+c
+      call c_delv(jdim, kdim, idim, iover, nbl, 
+     .            maxbl, i2d, ivmax, jvmax, kvmax, 
+     .            q, sj, sk, si, vol, 
+     .            ux, wt, blank, qj0, qk0,
+     .            qi0, bcj, bck, bci, volj0,
+     .            volk0, voli0, vormax)
+c
+      return
+      end
+c
+c
+c
+c     Below is the original version
+c
+      subroutine delv_orig(jdim,kdim,idim,q,sj,sk,si,vol,ux,wt,blank,
+     .                iover,qj0,qk0,qi0,bcj,bck,bci,nbl,volj0,volk0,
+     .                voli0,maxbl,vormax,ivmax,jvmax,kvmax)
+c
 c     $Id$
 c
 c**********************************************************************
