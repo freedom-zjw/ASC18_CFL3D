@@ -299,7 +299,215 @@ static void K_direction()
 // I-direction contributions
 static void I_direction()
 {
+	if (i2d != 0) return;
 	
+	// Be careful, don't run out of registers
+	
+	for (int i = 1; i < idim1; i++)
+	{
+		for (int k = 0; k < kdim1; k++)
+		{
+			int wt_base1 = wt_ind(0, k, 0);
+			int wt_base2 = wt_ind(0, k, 1);
+			int wt_base3 = wt_ind(0, k, 2);
+			int wt_base4 = wt_ind(0, k, 3);
+			int wt_base5 = wt_ind(0, k, 4);
+			int wt_base6 = wt_ind(0, k, 5);
+			int wt_base7 = wt_ind(0, k, 6);
+			int wt_base8 = wt_ind(0, k, 7);
+			int wt_base9 = wt_ind(0, k, 8);
+			
+			int q_base2 = q_ind(0, k, i, 1);
+			int q_base3 = q_ind(0, k, i, 2);
+			int q_base4 = q_ind(0, k, i, 3);
+			int qb_delt = q_ind(0, 0, 1, 0);
+			
+			int si_base1 = si_ind(0, k, i, 0);
+			int si_base2 = si_ind(0, k, i, 1);
+			int si_base3 = si_ind(0, k, i, 2);
+			int si_base4 = si_ind(0, k, i, 3);
+			
+			int ux_base1 = ux_ind(0, k, i, 0);
+			int ux_base2 = ux_ind(0, k, i, 1);
+			int ux_base3 = ux_ind(0, k, i, 2);
+			int ux_base4 = ux_ind(0, k, i, 3);
+			int ux_base5 = ux_ind(0, k, i, 4);
+			int ux_base6 = ux_ind(0, k, i, 5);
+			int ux_base7 = ux_ind(0, k, i, 6);
+			int ux_base8 = ux_ind(0, k, i, 7);
+			int ux_base9 = ux_ind(0, k, i, 8);
+			int uxb_delt = ux_ind(0, 0, 1, 0);
+			
+			int vol_base  = vol_ind(0, k, i);
+			int vol_base1 = vol_ind(0, k, i-1);
+			
+			for (int j = 0; j < jdim1; j++)
+			{
+				FTYPE term = si[si_base4+j] / (vol[vol_base+j] + vol[vol_base1+j]);
+				wt[wt_base1+j] = term * ((q[q_base2+j] - q[q_base2-qb_delt+j]) * si[si_base1+j]);
+				wt[wt_base2+j] = term * ((q[q_base2+j] - q[q_base2-qb_delt+j]) * si[si_base2+j]);
+				wt[wt_base3+j] = term * ((q[q_base2+j] - q[q_base2-qb_delt+j]) * si[si_base3+j]);
+				wt[wt_base4+j] = term * ((q[q_base3+j] - q[q_base3-qb_delt+j]) * si[si_base1+j]);
+				wt[wt_base5+j] = term * ((q[q_base3+j] - q[q_base3-qb_delt+j]) * si[si_base2+j]);
+				wt[wt_base6+j] = term * ((q[q_base3+j] - q[q_base3-qb_delt+j]) * si[si_base3+j]);
+				wt[wt_base7+j] = term * ((q[q_base4+j] - q[q_base4-qb_delt+j]) * si[si_base1+j]);
+				wt[wt_base8+j] = term * ((q[q_base4+j] - q[q_base4-qb_delt+j]) * si[si_base2+j]);
+				wt[wt_base9+j] = term * ((q[q_base4+j] - q[q_base4-qb_delt+j]) * si[si_base3+j]);
+				
+				ux[ux_base1-uxb_delt+j] += wt[wt_base1+j];
+				ux[ux_base2-uxb_delt+j] += wt[wt_base2+j];
+				ux[ux_base3-uxb_delt+j] += wt[wt_base3+j];
+				ux[ux_base4-uxb_delt+j] += wt[wt_base4+j];
+				ux[ux_base5-uxb_delt+j] += wt[wt_base5+j];
+				ux[ux_base6-uxb_delt+j] += wt[wt_base6+j];
+				ux[ux_base7-uxb_delt+j] += wt[wt_base7+j];
+				ux[ux_base8-uxb_delt+j] += wt[wt_base8+j];
+				ux[ux_base9-uxb_delt+j] += wt[wt_base9+j];
+				
+				ux[ux_base1+j] += wt[wt_base1+j];
+				ux[ux_base2+j] += wt[wt_base2+j];
+				ux[ux_base3+j] += wt[wt_base3+j];
+				ux[ux_base4+j] += wt[wt_base4+j];
+				ux[ux_base5+j] += wt[wt_base5+j];
+				ux[ux_base6+j] += wt[wt_base6+j];
+				ux[ux_base7+j] += wt[wt_base7+j];
+				ux[ux_base8+j] += wt[wt_base8+j];
+				ux[ux_base9+j] += wt[wt_base9+j];
+			}  // for (int j = 0; j < jdim1; j++)
+		}  // for (int k = 0; k < kdim1; k++)
+	}  // for (int i = 1; i < idim1; i++)
+	
+	int i = 0;
+	for (int k = 0; k < kdim1; k++)
+	{
+		int wt_base1 = wt_ind(0, k, 0);
+		int wt_base2 = wt_ind(0, k, 1);
+		int wt_base3 = wt_ind(0, k, 2);
+		int wt_base4 = wt_ind(0, k, 3);
+		int wt_base5 = wt_ind(0, k, 4);
+		int wt_base6 = wt_ind(0, k, 5);
+		int wt_base7 = wt_ind(0, k, 6);
+		int wt_base8 = wt_ind(0, k, 7);
+		int wt_base9 = wt_ind(0, k, 8);
+		
+		int ux_base1 = ux_ind(0, k, 0, 0);
+		int ux_base2 = ux_ind(0, k, 0, 1);
+		int ux_base3 = ux_ind(0, k, 0, 2);
+		int ux_base4 = ux_ind(0, k, 0, 3);
+		int ux_base5 = ux_ind(0, k, 0, 4);
+		int ux_base6 = ux_ind(0, k, 0, 5);
+		int ux_base7 = ux_ind(0, k, 0, 6);
+		int ux_base8 = ux_ind(0, k, 0, 7);
+		int ux_base9 = ux_ind(0, k, 0, 8);
+		
+		int q_base2  = q_ind(0, k, 0, 1);
+		int q_base3  = q_ind(0, k, 0, 2);
+		int q_base4  = q_ind(0, k, 0, 3);
+		
+		int qi0_base2 = qi0_ind(0, k, 1, 0);
+		int qi0_base3 = qi0_ind(0, k, 2, 0);
+		int qi0_base4 = qi0_ind(0, k, 3, 0);
+		
+		int si_base1 = si_ind(0, k, 0, 0);
+		int si_base2 = si_ind(0, k, 0, 1);
+		int si_base3 = si_ind(0, k, 0, 2);
+		int si_base4 = si_ind(0, k, 0, 3);
+		
+		int voli0_base = voli0_ind(0, k, 0);
+		int vol_base   = vol_ind(0, k, 0);
+		int bci_base   = bci_ind(0, k, 0);
+		
+		for (int j = 0; j < jdim1; j++)
+		{
+			FTYPE term   = si[si_base4+j] / (voli0[voli0_base+j] + vol[vol_base+j]);
+			FTYPE factor = bci[bci_base+j] + 1.0;
+			term *= factor;
+			wt[wt_base1+j] = term * ((q[q_base2+j] - qi0[qi0_base2+j]) * si[si_base1+j]);
+			wt[wt_base2+j] = term * ((q[q_base2+j] - qi0[qi0_base2+j]) * si[si_base2+j]);
+			wt[wt_base3+j] = term * ((q[q_base2+j] - qi0[qi0_base2+j]) * si[si_base3+j]);
+			wt[wt_base4+j] = term * ((q[q_base3+j] - qi0[qi0_base3+j]) * si[si_base1+j]);
+			wt[wt_base5+j] = term * ((q[q_base3+j] - qi0[qi0_base3+j]) * si[si_base2+j]);
+			wt[wt_base6+j] = term * ((q[q_base3+j] - qi0[qi0_base3+j]) * si[si_base3+j]);
+			wt[wt_base7+j] = term * ((q[q_base4+j] - qi0[qi0_base4+j]) * si[si_base1+j]);
+			wt[wt_base8+j] = term * ((q[q_base4+j] - qi0[qi0_base4+j]) * si[si_base2+j]);
+			wt[wt_base9+j] = term * ((q[q_base4+j] - qi0[qi0_base4+j]) * si[si_base3+j]);
+			ux[ux_base1+j] += wt[wt_base1+j];
+			ux[ux_base2+j] += wt[wt_base2+j];
+			ux[ux_base3+j] += wt[wt_base3+j];
+			ux[ux_base4+j] += wt[wt_base4+j];
+			ux[ux_base5+j] += wt[wt_base5+j];
+			ux[ux_base6+j] += wt[wt_base6+j];
+			ux[ux_base7+j] += wt[wt_base7+j];
+			ux[ux_base8+j] += wt[wt_base8+j];
+			ux[ux_base9+j] += wt[wt_base9+j];
+		}  // for (int j = 0; j < jdim1; j++)
+	}  // for (int k = 0; k < kdim1; k++)
+	
+	i = idim - 1;
+	for (int k = 0; k < kdim1; k++)
+	{
+		int wt_base1 = wt_ind(0, k, 0);
+		int wt_base2 = wt_ind(0, k, 1);
+		int wt_base3 = wt_ind(0, k, 2);
+		int wt_base4 = wt_ind(0, k, 3);
+		int wt_base5 = wt_ind(0, k, 4);
+		int wt_base6 = wt_ind(0, k, 5);
+		int wt_base7 = wt_ind(0, k, 6);
+		int wt_base8 = wt_ind(0, k, 7);
+		int wt_base9 = wt_ind(0, k, 8);
+		
+		int ux_base1 = ux_ind(0, k, idim1-1, 0);
+		int ux_base2 = ux_ind(0, k, idim1-1, 1);
+		int ux_base3 = ux_ind(0, k, idim1-1, 2);
+		int ux_base4 = ux_ind(0, k, idim1-1, 3);
+		int ux_base5 = ux_ind(0, k, idim1-1, 4);
+		int ux_base6 = ux_ind(0, k, idim1-1, 5);
+		int ux_base7 = ux_ind(0, k, idim1-1, 6);
+		int ux_base8 = ux_ind(0, k, idim1-1, 7);
+		int ux_base9 = ux_ind(0, k, idim1-1, 8);
+		
+		int q_base2  = q_ind(0, k, idim1-1, 1);
+		int q_base3  = q_ind(0, k, idim1-1, 2);
+		int q_base4  = q_ind(0, k, idim1-1, 3);
+		
+		int qi0_base2 = qi0_ind(0, k, 1, 2);
+		int qi0_base3 = qi0_ind(0, k, 2, 2);
+		int qi0_base4 = qi0_ind(0, k, 3, 2);
+		
+		int si_base1 = si_ind(0, k, idim1, 0);
+		int si_base2 = si_ind(0, k, idim1, 1);
+		int si_base3 = si_ind(0, k, idim1, 2);
+		int si_base4 = si_ind(0, k, idim1, 3);
+		
+		int voli0_base = voli0_ind(0, k, 2);
+		int vol_base   = vol_ind(0, k, idim1-1);
+		int bci_base   = bci_ind(0, k, 1);
+		
+		for (int j = 0; j < jdim1; j++)
+		{
+			FTYPE term   = si[si_base4+j] / (voli0[voli0_base+j] + vol[vol_base+j]);
+			FTYPE factor = bci[bci_base+j] + 1.0;
+			term *= factor;
+			wt[wt_base1+j] = term * ((qi0[qi0_base2+j] - q[q_base2+j]) * si[si_base1+j]);
+			wt[wt_base2+j] = term * ((qi0[qi0_base2+j] - q[q_base2+j]) * si[si_base2+j]);
+			wt[wt_base3+j] = term * ((qi0[qi0_base2+j] - q[q_base2+j]) * si[si_base3+j]);
+			wt[wt_base4+j] = term * ((qi0[qi0_base3+j] - q[q_base3+j]) * si[si_base1+j]);
+			wt[wt_base5+j] = term * ((qi0[qi0_base3+j] - q[q_base3+j]) * si[si_base2+j]);
+			wt[wt_base6+j] = term * ((qi0[qi0_base3+j] - q[q_base3+j]) * si[si_base3+j]);
+			wt[wt_base7+j] = term * ((qi0[qi0_base4+j] - q[q_base4+j]) * si[si_base1+j]);
+			wt[wt_base8+j] = term * ((qi0[qi0_base4+j] - q[q_base4+j]) * si[si_base2+j]);
+			wt[wt_base9+j] = term * ((qi0[qi0_base4+j] - q[q_base4+j]) * si[si_base3+j]);
+			ux[ux_base1+j] += wt[wt_base1+j];
+			ux[ux_base2+j] += wt[wt_base2+j];
+			ux[ux_base3+j] += wt[wt_base3+j];
+			ux[ux_base4+j] += wt[wt_base4+j];
+			ux[ux_base5+j] += wt[wt_base5+j];
+			ux[ux_base6+j] += wt[wt_base6+j];
+			ux[ux_base7+j] += wt[wt_base7+j];
+			ux[ux_base8+j] += wt[wt_base8+j];
+			ux[ux_base9+j] += wt[wt_base9+j];
+		}  // for (int j = 0; j < jdim1; j++)
+	}  // for (int k = 0; k < kdim1; k++)
 }
 
 static int c_delv_cnt = 0;
@@ -313,7 +521,7 @@ void c_delv_(
 	FTYPE *_volk0, FTYPE *_voli0, FTYPE *_vormax
 )
 {
-	if (c_delv_cnt == 0) printf("Using c_delv, J\n"); fflush(stdout);
+	if (c_delv_cnt == 0) printf("Using c_delv: J, K, I\n"); fflush(stdout);
 	
 	// Single variables
 	jdim  = *_jdim;
