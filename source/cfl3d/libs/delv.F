@@ -66,148 +66,26 @@ c
 c
       common /twod/ i2d
 c
-      write (*,*) jdim,kdim,idim,iover,nbl,maxbl,i2d
-      call c_delv(jdim, kdim, idim, iover, nbl, 
-     .            maxbl, i2d, ivmax, jvmax, kvmax, 
-     .            q, sj, sk, si, vol, 
-     .            ux, wt, blank, qj0, qk0,
-     .            qi0, bcj, bck, bci, volj0,
-     .            volk0, voli0, vormax)
-
+c
       ifi=1
       ifj=1
       ifk=1
       jdim1 = jdim-1
       kdim1 = kdim-1
       idim1 = idim-1
-      do 999 l=1,9
-      do 999 i=1,idim1
-      do 999 k=1,kdim1
-      do 999 j=1,jdim1
-        ux(j,k,i,l) = 0.
- 999  continue
-      onec = 1.
 c
-c      J-direction contributions
 c
-      if(ifj .gt. 0) then
-      do 1000 i=1,idim1
-      do 1000 k=1,kdim1
+      call c_delv(jdim, kdim, idim, iover, nbl, 
+     .            maxbl, i2d, ivmax, jvmax, kvmax, 
+     .            q, sj, sk, si, vol, 
+     .            ux, wt, blank, qj0, qk0,
+     .            qi0, bcj, bck, bci, volj0,
+     .            volk0, voli0, vormax)
 c
-c      cycle through interfaces
+
 c
-      do 100 j=2,jdim1
-      term      = sj(j,k,i,4)/(vol(j,k,i)+vol(j-1,k,i))
-      wt(j,1,1) = term*( (q(j,k,i,2)-q(j-1,k,i,2))*sj(j,k,i,1) )
-      wt(j,1,2) = term*( (q(j,k,i,2)-q(j-1,k,i,2))*sj(j,k,i,2) )
-      wt(j,1,3) = term*( (q(j,k,i,2)-q(j-1,k,i,2))*sj(j,k,i,3) )
-      wt(j,1,4) = term*( (q(j,k,i,3)-q(j-1,k,i,3))*sj(j,k,i,1) )
-      wt(j,1,5) = term*( (q(j,k,i,3)-q(j-1,k,i,3))*sj(j,k,i,2) )
-      wt(j,1,6) = term*( (q(j,k,i,3)-q(j-1,k,i,3))*sj(j,k,i,3) )
-      wt(j,1,7) = term*( (q(j,k,i,4)-q(j-1,k,i,4))*sj(j,k,i,1) )
-      wt(j,1,8) = term*( (q(j,k,i,4)-q(j-1,k,i,4))*sj(j,k,i,2) )
-      wt(j,1,9) = term*( (q(j,k,i,4)-q(j-1,k,i,4))*sj(j,k,i,3) )
-  100 continue
-      j=1
-      jp1=min(jdim-1,j+1)
-      term      = sj(j,k,i,4)/(volj0(k,i,1)+vol(j,k,i))
-      factor    = bcj(k,i,1) + 1.0
-      term = term*factor
-      wt(j,1,1) = term*( (q(j,k,i,2)-qj0(k,i,2,1))*sj(j,k,i,1) )
-      wt(j,1,2) = term*( (q(j,k,i,2)-qj0(k,i,2,1))*sj(j,k,i,2) )
-      wt(j,1,3) = term*( (q(j,k,i,2)-qj0(k,i,2,1))*sj(j,k,i,3) )
-      wt(j,1,4) = term*( (q(j,k,i,3)-qj0(k,i,3,1))*sj(j,k,i,1) )
-      wt(j,1,5) = term*( (q(j,k,i,3)-qj0(k,i,3,1))*sj(j,k,i,2) )
-      wt(j,1,6) = term*( (q(j,k,i,3)-qj0(k,i,3,1))*sj(j,k,i,3) )
-      wt(j,1,7) = term*( (q(j,k,i,4)-qj0(k,i,4,1))*sj(j,k,i,1) )
-      wt(j,1,8) = term*( (q(j,k,i,4)-qj0(k,i,4,1))*sj(j,k,i,2) )
-      wt(j,1,9) = term*( (q(j,k,i,4)-qj0(k,i,4,1))*sj(j,k,i,3) )
-      j=jdim
-      jm2=max(1,j-2)
-      term      = sj(j,k,i,4)/(volj0(k,i,3)+vol(j-1,k,i))
-      factor    = bcj(k,i,2) + 1.0
-      term = term*factor
-      wt(j,1,1) = term*( (qj0(k,i,2,3)-q(j-1,k,i,2))*sj(j,k,i,1) )
-      wt(j,1,2) = term*( (qj0(k,i,2,3)-q(j-1,k,i,2))*sj(j,k,i,2) )
-      wt(j,1,3) = term*( (qj0(k,i,2,3)-q(j-1,k,i,2))*sj(j,k,i,3) )
-      wt(j,1,4) = term*( (qj0(k,i,3,3)-q(j-1,k,i,3))*sj(j,k,i,1) )
-      wt(j,1,5) = term*( (qj0(k,i,3,3)-q(j-1,k,i,3))*sj(j,k,i,2) )
-      wt(j,1,6) = term*( (qj0(k,i,3,3)-q(j-1,k,i,3))*sj(j,k,i,3) )
-      wt(j,1,7) = term*( (qj0(k,i,4,3)-q(j-1,k,i,4))*sj(j,k,i,1) )
-      wt(j,1,8) = term*( (qj0(k,i,4,3)-q(j-1,k,i,4))*sj(j,k,i,2) )
-      wt(j,1,9) = term*( (qj0(k,i,4,3)-q(j-1,k,i,4))*sj(j,k,i,3) )
+c      J-direction contributions is handled by c_delv
 c
-c      cycle through cell centers
-c
-      do 200 l=1,9
-      do 200 j=1,jdim1
-      ux(j,k,i,l)   = ux(j,k,i,l) + wt(j,1,l) + wt(j+1,1,l)
-  200 continue
- 1000 continue
-      end if
-c
-c      K-direction contributions
-c
-      if(ifk .gt. 0) then
-      do 2000 i=1,idim1
-c
-c      cycle through interfaces
-c
-      do 1200 k=2,kdim-1
-      do 1200 j=1,jdim1
-      term      = sk(j,k,i,4)/(vol(j,k,i)+vol(j,k-1,i))
-      wt(j,k,1) = term*( (q(j,k,i,2)-q(j,k-1,i,2))*sk(j,k,i,1) )
-      wt(j,k,2) = term*( (q(j,k,i,2)-q(j,k-1,i,2))*sk(j,k,i,2) )
-      wt(j,k,3) = term*( (q(j,k,i,2)-q(j,k-1,i,2))*sk(j,k,i,3) )
-      wt(j,k,4) = term*( (q(j,k,i,3)-q(j,k-1,i,3))*sk(j,k,i,1) )
-      wt(j,k,5) = term*( (q(j,k,i,3)-q(j,k-1,i,3))*sk(j,k,i,2) )
-      wt(j,k,6) = term*( (q(j,k,i,3)-q(j,k-1,i,3))*sk(j,k,i,3) )
-      wt(j,k,7) = term*( (q(j,k,i,4)-q(j,k-1,i,4))*sk(j,k,i,1) )
-      wt(j,k,8) = term*( (q(j,k,i,4)-q(j,k-1,i,4))*sk(j,k,i,2) )
-      wt(j,k,9) = term*( (q(j,k,i,4)-q(j,k-1,i,4))*sk(j,k,i,3) )
- 1200 continue
-      k=1
-      kp1=min(kdim-1,k+1)
-      do 1201 j=1,jdim1
-      term      = sk(j,k,i,4)/(volk0(j,i,1)+vol(j,k,i))
-      factor    = bck(j,i,1) + 1.0
-      term = term*factor
-        wt(j,k,1) = term*( (q(j,k,i,2)-qk0(j,i,2,1))*sk(j,k,i,1) )
-        wt(j,k,2) = term*( (q(j,k,i,2)-qk0(j,i,2,1))*sk(j,k,i,2) )
-        wt(j,k,3) = term*( (q(j,k,i,2)-qk0(j,i,2,1))*sk(j,k,i,3) )
-        wt(j,k,4) = term*( (q(j,k,i,3)-qk0(j,i,3,1))*sk(j,k,i,1) )
-        wt(j,k,5) = term*( (q(j,k,i,3)-qk0(j,i,3,1))*sk(j,k,i,2) )
-        wt(j,k,6) = term*( (q(j,k,i,3)-qk0(j,i,3,1))*sk(j,k,i,3) )
-        wt(j,k,7) = term*( (q(j,k,i,4)-qk0(j,i,4,1))*sk(j,k,i,1) )
-        wt(j,k,8) = term*( (q(j,k,i,4)-qk0(j,i,4,1))*sk(j,k,i,2) )
-        wt(j,k,9) = term*( (q(j,k,i,4)-qk0(j,i,4,1))*sk(j,k,i,3) )
- 1201 continue
-      k=kdim
-      km2=max(1,k-2)
-      do 1202 j=1,jdim1
-      term      = sk(j,k,i,4)/(volk0(j,i,3)+vol(j,k-1,i))
-      factor    = bck(j,i,2) + 1.0
-      term = term*factor
-        wt(j,k,1) = term*( (qk0(j,i,2,3)-q(j,k-1,i,2))*sk(j,k,i,1) )
-        wt(j,k,2) = term*( (qk0(j,i,2,3)-q(j,k-1,i,2))*sk(j,k,i,2) )
-        wt(j,k,3) = term*( (qk0(j,i,2,3)-q(j,k-1,i,2))*sk(j,k,i,3) )
-        wt(j,k,4) = term*( (qk0(j,i,3,3)-q(j,k-1,i,3))*sk(j,k,i,1) )
-        wt(j,k,5) = term*( (qk0(j,i,3,3)-q(j,k-1,i,3))*sk(j,k,i,2) )
-        wt(j,k,6) = term*( (qk0(j,i,3,3)-q(j,k-1,i,3))*sk(j,k,i,3) )
-        wt(j,k,7) = term*( (qk0(j,i,4,3)-q(j,k-1,i,4))*sk(j,k,i,1) )
-        wt(j,k,8) = term*( (qk0(j,i,4,3)-q(j,k-1,i,4))*sk(j,k,i,2) )
-        wt(j,k,9) = term*( (qk0(j,i,4,3)-q(j,k-1,i,4))*sk(j,k,i,3) )
- 1202 continue
-c
-c      cycle through cell centers
-c
-      do 1400 l=1,9
-      do 1400 k=1,kdim1
-      do 1400 j=1,jdim1
-      ux(j,k,i,l) = ux(j,k,i,l) + wt(j,k,l) + wt(j,k+1,l)
- 1400 continue
- 2000 continue
-      end if
 c
 c      I-direction contributions
 c
@@ -308,6 +186,7 @@ c
 c
 c     set velocity derivatives for hole cells to one
 c
+      onec = 1.
       if (iover.eq.1) then
          do 2403 nk=1,9
          do 2402 i=1,idim1

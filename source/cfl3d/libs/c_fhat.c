@@ -18,12 +18,11 @@
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
-FTYPE *ax = NULL, *ay = NULL, *az = NULL, *area = NULL;
-FTYPE *at = NULL, *qr = NULL, *ql = NULL, *f    = NULL;
-
-int n, iexp, nvtq;
-FTYPE gamma, gm1, gp1, gm1g, gp1g, ggm1, cprec;
-FTYPE uref, avn, epsa_l, epsa_r, x1, c1, zero;
+static int n, iexp, nvtq;
+static FTYPE gamma, gm1, gp1, gm1g, gp1g, ggm1, cprec;
+static FTYPE uref, avn, epsa_l, epsa_r, x1, c1, zero;
+static FTYPE *ax = NULL, *ay = NULL, *az = NULL, *area = NULL;
+static FTYPE *at = NULL, *qr = NULL, *ql = NULL, *f    = NULL;
 
 static void c_fhat_original()
 {
@@ -443,7 +442,7 @@ static void c_fhat_modified()
 	}
 }
 
-int iter = 0;
+static int c_fhat_cnt = 0;
 
 void c_fhat_(
 	int *_n, int *_iexp, int *_nvtq, 
@@ -453,6 +452,8 @@ void c_fhat_(
 	FTYPE *_at, FTYPE *_qr, FTYPE *_ql, FTYPE *_f
 )
 {
+	if (c_fhat_cnt == 0) printf("Using c_fhat\n"); fflush(stdout);
+	
 	// Single variables
 	n      = *_n;
 	iexp   = *_iexp;
@@ -482,14 +483,8 @@ void c_fhat_(
 	ql   = _ql;
 	f    = _f;
 	
-	if (FABS(cprec) < zero) 
-	{
-		if (iter == 0) printf("c_fhat_original\n");
-		c_fhat_original();
-	} else { 
-		if (iter == 0) printf("c_fhat_modified\n");
-		c_fhat_modified();
-	}
+	if (FABS(cprec) < zero) c_fhat_original();
+	else c_fhat_original();
 	
-	iter++;
+	c_fhat_cnt++;
 }
