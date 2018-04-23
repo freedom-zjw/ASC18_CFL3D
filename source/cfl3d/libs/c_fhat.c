@@ -8,10 +8,19 @@
 
 // TODO: Move this macro to a head file and share among all C files
 // TODO: Use different math functions (abs, pow, ...) for different types
-#define FTYPE float
-#define SQRT  sqrtf
-#define FABS  fabsf
-#define POW   powf
+#ifdef P3D_SINGLE
+	#pragma message("C_fhat using float type")
+	#define FTYPE float
+	#define SQRT  sqrtf
+	#define FABS  fabsf
+	#define POW   powf
+#else
+	#pragma message("C_fhat using double type")
+	#define FTYPE double
+	#define SQRT  sqrt
+	#define FABS  fabs
+	#define POW   pow
+#endif
 
 #define ind(i, j) ((i) + (j) * nvtq)
 
@@ -483,8 +492,8 @@ void c_fhat_(
 	ql   = _ql;
 	f    = _f;
 	
-	if (FABS(cprec) < zero) c_fhat_original();
-	else c_fhat_original();
+	if (creal(cprec) == 0.0) c_fhat_original();
+	else c_fhat_modified();
 	
 	c_fhat_cnt++;
 }

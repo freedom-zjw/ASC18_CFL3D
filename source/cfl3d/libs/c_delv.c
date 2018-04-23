@@ -7,11 +7,13 @@
 #include <omp.h>
 
 // TODO: Move this macro to a head file and share among all C files
-// TODO: Use different math functions (abs, pow, ...) for different types
-#define FTYPE float
-#define SQRT  sqrtf
-#define FABS  fabsf
-#define POW   powf
+#ifdef P3D_SINGLE
+	#pragma message("C_delv using float type")
+	#define FTYPE float
+#else 
+	#pragma message("C_delv using float type")
+	#define FTYPE double
+#end
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
