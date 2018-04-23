@@ -3,6 +3,7 @@ build/bin/
 .DS_Store/
 .DS_Store
 *.o*
+*.udb
 build/tools/seq/*.F*
 build/splitcmplx/seq/*.F*
 build/split/seq/*.F*
