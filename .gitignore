@@ -19,6 +19,8 @@ build/cfl/libs/bessel.c
 build/cfl/seq/*.F*
 build/cfl/mpi/*.F*
 build/cfl/libs/*.F*
+build/cfl/libs/*.c*
+build/cfl/libs/*.a*
 build/cfl/libs/*.mod
 build/mag/seq/mag1.h
 build/tools/seq/Get_FD
