@@ -7,19 +7,32 @@
 #include <omp.h>
 
 // TODO: Move this macro to a head file and share among all C files
-// TODO: Use different math functions (abs, pow, ...) for different types
 #ifdef DBLE_PRECSN
-	#pragma message("C_fhat using double type")
-	#define FTYPE double
-	#define SQRT  sqrt
-	#define FABS  fabs
-	#define POW   pow
+	#ifdef C_CMPLX
+		#pragma message("C_fhat using double complex")
+		#define FTYPE double complex
+		#define SQRT  csqrt
+		#define POW   cpow
+	#else
+		#pragma message("C_fhat using double real")
+		#define FTYPE double
+		#define SQRT  sqrt
+		#define FABS  fabs
+		#define POW   pow
+	#endif
 #else
-	#pragma message("C_fhat using float type")
-	#define FTYPE float
-	#define SQRT  sqrtf
-	#define FABS  fabsf
-	#define POW   powf
+	#ifdef C_CMPLX
+		#pragma message("C_fhat using float complex")
+		#define FTYPE float complex
+		#define SQRT  csqrtf
+		#define POW   cpowf
+	#else
+		#pragma message("C_fhat using float real")
+		#define FTYPE float
+		#define SQRT  sqrtf
+		#define FABS  fabsf
+		#define POW   powf
+	#endif 
 #endif
 
 #define ind(i, j) ((i) + (j) * nvtq)

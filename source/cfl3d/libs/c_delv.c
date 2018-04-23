@@ -8,11 +8,21 @@
 
 // TODO: Move this macro to a head file and share among all C files
 #ifdef DBLE_PRECSN
-	#pragma message("C_delv using double type")
-	#define FTYPE double
+	#ifdef C_CMPLX
+		#pragma message("C_fhat using double complex")
+		#define FTYPE double complex
+	#else
+		#pragma message("C_fhat using double real")
+		#define FTYPE double
+	#endif
 #else
-	#pragma message("C_delv using float type")
-	#define FTYPE float
+	#ifdef C_CMPLX
+		#pragma message("C_fhat using float complex")
+		#define FTYPE float complex
+	#else
+		#pragma message("C_fhat using float real")
+		#define FTYPE float
+	#endif 
 #endif
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))

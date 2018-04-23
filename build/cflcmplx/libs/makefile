@@ -15,6 +15,7 @@ link: lncode lnhead
 lncode:
 	@ echo "        linking source code"
 	ln -s $(CFLSRC_S)/*.F .
+	ln -sf $(CFLSRC_S)/*.c .
 
 lnhead:
 
@@ -103,10 +104,14 @@ FOBJ_LIBS = $(FSRC_LIBS:.F=.o)
 
 FOBJ_SPEC = $(FSRC_SPEC:.F=.o)
 
+CC        = icc
+COBJ_LIBS = c_fhat.o c_delv.o
+CFLAGS    = -O2 -ipo -g -Wall -xHost -qopenmp -std=c99 -qopt-report=5 -fp_speculation=safe
+
 COMMONLIB = libcommon.a
 
-$(COMMONLIB): $(FSRC_LIBS) $(FOBJ_LIBS) $(FSRC_SPEC) $(FOBJ_SPEC)
-	ar $(AROPT) $(COMMONLIB) $(FOBJ_LIBS) $(FOBJ_SPEC)
+$(COMMONLIB):  $(COBJ_LIBS) $(FSRC_LIBS) $(FOBJ_LIBS) $(FSRC_SPEC) $(FOBJ_SPEC)
+	ar $(AROPT) $(COMMONLIB) $(FOBJ_LIBS) $(FOBJ_SPEC) $(COBJ_LIBS)
 	@$(RANLIB) $(COMMONLIB)
 
 $(FOBJ_LIBS): 
@@ -115,6 +120,9 @@ $(FOBJ_LIBS):
 $(FOBJ_SPEC):
 	$(FTN) $(CPPOPT) $(FFLAG_SPEC) -c $*.F
 
+$(COBJ_LIBS):
+	$(CC) $(CPPOPT) $(CFLAGS) -c $*.c
+	
 $(EXEC): $(COMMONLIB)
 	@ echo "                                                              "
 	@ echo "=============================================================="
