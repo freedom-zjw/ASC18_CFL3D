@@ -8,18 +8,18 @@
 
 // TODO: Move this macro to a head file and share among all C files
 // TODO: Use different math functions (abs, pow, ...) for different types
-#ifdef P3D_SINGLE
-	#pragma message("C_fhat using float type")
-	#define FTYPE float
-	#define SQRT  sqrtf
-	#define FABS  fabsf
-	#define POW   powf
-#else
+#ifdef DBLE_PRECSN
 	#pragma message("C_fhat using double type")
 	#define FTYPE double
 	#define SQRT  sqrt
 	#define FABS  fabs
 	#define POW   pow
+#else
+	#pragma message("C_fhat using float type")
+	#define FTYPE float
+	#define SQRT  sqrtf
+	#define FABS  fabsf
+	#define POW   powf
 #endif
 
 #define ind(i, j) ((i) + (j) * nvtq)

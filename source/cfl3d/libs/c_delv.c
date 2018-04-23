@@ -7,13 +7,13 @@
 #include <omp.h>
 
 // TODO: Move this macro to a head file and share among all C files
-#ifdef P3D_SINGLE
+#ifdef DBLE_PRECSN
+	#pragma message("C_delv using double type")
+	#define FTYPE double
+#else
 	#pragma message("C_delv using float type")
 	#define FTYPE float
-#else 
-	#pragma message("C_delv using float type")
-	#define FTYPE double
-#end
+#endif
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
@@ -177,15 +177,15 @@ static void K_direction()
 			for (int j = 0; j < jdim1; j++)
 			{
 				FTYPE term = sk[sk_base4+j] / (vol[vol_base+j] + vol[vol1_base+j]);
-				wt[wt_base1] = term * ((q[q_base2] - q[q1_base2]) * sk[sk_base1+j]);
-				wt[wt_base2] = term * ((q[q_base2] - q[q1_base2]) * sk[sk_base2+j]);
-				wt[wt_base3] = term * ((q[q_base2] - q[q1_base2]) * sk[sk_base3+j]);
-				wt[wt_base4] = term * ((q[q_base3] - q[q1_base3]) * sk[sk_base1+j]);
-				wt[wt_base5] = term * ((q[q_base3] - q[q1_base3]) * sk[sk_base2+j]);
-				wt[wt_base6] = term * ((q[q_base3] - q[q1_base3]) * sk[sk_base3+j]);
-				wt[wt_base7] = term * ((q[q_base4] - q[q1_base4]) * sk[sk_base1+j]);
-				wt[wt_base8] = term * ((q[q_base4] - q[q1_base4]) * sk[sk_base2+j]);
-				wt[wt_base9] = term * ((q[q_base4] - q[q1_base4]) * sk[sk_base3+j]);
+				wt[wt_base1+j] = term * ((q[q_base2+j] - q[q1_base2+j]) * sk[sk_base1+j]);
+				wt[wt_base2+j] = term * ((q[q_base2+j] - q[q1_base2+j]) * sk[sk_base2+j]);
+				wt[wt_base3+j] = term * ((q[q_base2+j] - q[q1_base2+j]) * sk[sk_base3+j]);
+				wt[wt_base4+j] = term * ((q[q_base3+j] - q[q1_base3+j]) * sk[sk_base1+j]);
+				wt[wt_base5+j] = term * ((q[q_base3+j] - q[q1_base3+j]) * sk[sk_base2+j]);
+				wt[wt_base6+j] = term * ((q[q_base3+j] - q[q1_base3+j]) * sk[sk_base3+j]);
+				wt[wt_base7+j] = term * ((q[q_base4+j] - q[q1_base4+j]) * sk[sk_base1+j]);
+				wt[wt_base8+j] = term * ((q[q_base4+j] - q[q1_base4+j]) * sk[sk_base2+j]);
+				wt[wt_base9+j] = term * ((q[q_base4+j] - q[q1_base4+j]) * sk[sk_base3+j]);
 			}
 		}  // for (int k = 1; k < kdim1; k++)
 		
