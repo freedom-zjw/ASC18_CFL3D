@@ -9,18 +9,18 @@
 // TODO: Move this macro to a head file and share among all C files
 #ifdef DBLE_PRECSN
 	#ifdef C_CMPLX
-		#pragma message("C_fhat using double complex")
+		#pragma message("c_delv using double complex")
 		#define FTYPE double complex
 	#else
-		#pragma message("C_fhat using double real")
+		#pragma message("c_delv using double real")
 		#define FTYPE double
 	#endif
 #else
 	#ifdef C_CMPLX
-		#pragma message("C_fhat using float complex")
+		#pragma message("c_delv using float complex")
 		#define FTYPE float complex
 	#else
-		#pragma message("C_fhat using float real")
+		#pragma message("c_delv using float real")
 		#define FTYPE float
 	#endif 
 #endif

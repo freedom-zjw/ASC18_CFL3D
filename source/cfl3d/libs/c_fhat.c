@@ -9,12 +9,12 @@
 // TODO: Move this macro to a head file and share among all C files
 #ifdef DBLE_PRECSN
 	#ifdef C_CMPLX
-		#pragma message("C_fhat using double complex")
+		#pragma message("c_fhat using double complex")
 		#define FTYPE double complex
 		#define SQRT  csqrt
 		#define POW   cpow
 	#else
-		#pragma message("C_fhat using double real")
+		#pragma message("c_fhat using double real")
 		#define FTYPE double
 		#define SQRT  sqrt
 		#define FABS  fabs
@@ -22,12 +22,12 @@
 	#endif
 #else
 	#ifdef C_CMPLX
-		#pragma message("C_fhat using float complex")
+		#pragma message("c_fhat using float complex")
 		#define FTYPE float complex
 		#define SQRT  csqrtf
 		#define POW   cpowf
 	#else
-		#pragma message("C_fhat using float real")
+		#pragma message("c_fhat using float real")
 		#define FTYPE float
 		#define SQRT  sqrtf
 		#define FABS  fabsf

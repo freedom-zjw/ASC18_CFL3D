@@ -106,7 +106,7 @@ FOBJ_SPEC = $(FSRC_SPEC:.F=.o)
 
 CC        = icc
 COBJ_LIBS = c_fhat.o c_delv.o
-CFLAGS    = -O2 -ipo -g -Wall -xHost -qopenmp -std=c99 -qopt-report=5 -fp_speculation=safe
+CFLAGS    = -DC_CMPLX -O2 -ipo -g -Wall -xHost -qopenmp -std=c99 -qopt-report=5 -fp_speculation=safe
 
 COMMONLIB = libcommon.a
 
